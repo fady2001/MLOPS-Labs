@@ -3,7 +3,8 @@ from sklearn.ensemble import RandomForestClassifier
 from src.dataset.dataset import Dataset
 from src.logger import ExecutorLogger
 from src.modeling.evaluate import evaluate, generate_submission_file
-from src.modeling.training import save_model, train
+from src.modeling.training import train
+from src.utils import save_components
 
 
 def main(logger:ExecutorLogger) -> None:
@@ -19,13 +20,9 @@ def main(logger:ExecutorLogger) -> None:
     model = RandomForestClassifier(n_estimators=100, max_depth=5, random_state=1)
     X_train, y_train, X_val, y_val = train_ds.get_X_train_val_y_train_val()
     train(model, X_train,y_train, logger)
-    save_model(model, model_name="random_forest", logger=logger)
-    train_ds.save_encoders("random_forest","label_encoder")
-    train_ds.save_scalers("random_forest")
-    
-    logger.info("Training finished")
-    
     evaluate(X_val, y_val, model_name="random_forest", logger=logger)
+    save_components(model, model_name="random_forest", ds=train_ds, encoder_name="label_encoders", logger=logger)
+    logger.info("Training finished")
     
     test_df = Dataset(
         filename="test.csv",

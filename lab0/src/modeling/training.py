@@ -3,38 +3,33 @@ import pickle
 from typing import Dict
 
 import pandas as pd
+from sklearn.base import BaseEstimator
 
 from src.config import MODELS_DIR
-from src.dataset.dataset import Dataset
 from src.logger import ExecutorLogger
 
 
-def train(model:None,X_train:pd.DataFrame,y_train:pd.Series,logger:ExecutorLogger) -> None:
+def train(model:BaseEstimator,X_train:pd.DataFrame,y_train:pd.Series,logger:ExecutorLogger) -> None:
     """
     Train the model.
     """
     if model is None:
         logger.error("Model is None.")
         raise ValueError("Model is None.")
-    model.fit(X_train,y_train)
+    model.fit(X_train, y_train)
     logger.success("Model trained.")
     
-def RandomizedSearchCV(model:None,params:Dict,ds:Dataset,logger:ExecutorLogger) -> None:
+def RandomizedSearchCV(model:BaseEstimator,params:Dict,X_train:pd.DataFrame,y_train:pd.Series,logger:ExecutorLogger) -> None:
     """
     Perform Randomized Search CV on the model.
     """
     if model is None:
         logger.error("Model is None.")
         raise ValueError("Model is None.")
-    if ds is None:
-        logger.error("Dataset is None.")
-        raise ValueError("Dataset is None.")
-    
-    X,y = ds.get_X_y()
     
     
     search = RandomizedSearchCV(model, params, n_iter=100, cv=3, verbose=2)
-    search.fit(X,y)
+    search.fit(X_train,y_train)
     
     logger.info(f"Best parameters: {search.best_params_}")
     logger.info(f"Best score: {search.best_score_}")
