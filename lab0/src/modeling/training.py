@@ -2,24 +2,21 @@ import os
 import pickle
 from typing import Dict
 
+import pandas as pd
+
 from src.config import MODELS_DIR
 from src.dataset.dataset import Dataset
 from src.logger import ExecutorLogger
 
 
-def train(model:None,ds:Dataset,logger:ExecutorLogger) -> None:
+def train(model:None,X_train:pd.DataFrame,y_train:pd.Series,logger:ExecutorLogger) -> None:
     """
     Train the model.
     """
     if model is None:
         logger.error("Model is None.")
         raise ValueError("Model is None.")
-    if ds is None:
-        logger.error("Dataset is None.")
-        raise ValueError("Dataset is None.")
-    
-    X,y = ds.get_X_y()
-    model.fit(X,y)
+    model.fit(X_train,y_train)
     logger.success("Model trained.")
     
 def RandomizedSearchCV(model:None,params:Dict,ds:Dataset,logger:ExecutorLogger) -> None:

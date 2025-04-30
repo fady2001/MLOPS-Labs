@@ -20,8 +20,8 @@ class Dataset:
         self.target_col:str = target_col
         self.logger:ExecutorLogger = logger
         self.df:pd.DataFrame = self.load_dataset(filename, id_col, logger)
-        self.encoders = None
-        self.scalers = None
+        self.encoders = encoder
+        self.scalers = scaler
         
     def load_dataset(self,filename: str, id_col:str, logger:ExecutorLogger) -> pd.DataFrame:
         """
@@ -58,14 +58,29 @@ class Dataset:
         self.save_dataset(self.df, filename=INTERIM_DATA_DIR / self.filename)
         return self.df
     
-    def preprocess_dataset(self) -> None:
-        preprocessed_df,self.encoder = before_split_preprocess(self.df)
+    def preprocess_train(self) -> None:
+        # drop column with more than 100 unique values
+        self.df = self.df.loc[:,self.df.nunique() < 15]        
+        preprocessed_df,self.encoders = before_split_preprocess(self.df)
         self.save_dataset(preprocessed_df, filename="train.csv", dir=PROCESSED_DATA_DIR)
-        train_df, val_df = self.split_dataset(preprocessed_df)
-        preprocessed_train_df,self.scalers = after_split_preprocess(train_df)
-        preprocessed_val_df = process_test(val_df, self.encoder, self.scalers)
+        self.train_df, self.val_df = self.split_dataset(preprocessed_df)
+        preprocessed_train_df,self.scalers = after_split_preprocess(self.train_df, self.target_col)
+        preprocessed_val_df = process_test(self.val_df,self.target_col, self.encoders, self.scalers)
         self.save_dataset(preprocessed_train_df, filename="train.csv", dir=PROCESSED_DATA_DIR)
         self.save_dataset(preprocessed_val_df, filename="val.csv", dir=PROCESSED_DATA_DIR)
+        
+    def preprocess_test(self) -> pd.DataFrame:
+        """
+        Preprocess the test dataset.
+        """
+        # drop column with more than 100 unique values
+        self.df = self.df.loc[:,self.df.nunique() < 15]        
+        if self.encoders is None or self.scalers is None:
+            self.logger.error("Encoders and scalers are not available. Please preprocess the training dataset first.")
+            raise ValueError("Encoders and scalers are not available. Please preprocess the training dataset first.")
+        preprocessed_df = process_test(self.df, self.target_col,self.encoders, self.scalers)
+        self.save_dataset(preprocessed_df, filename="test.csv", dir=PROCESSED_DATA_DIR)
+        return preprocessed_df
         
     def save_dataset(self, df: pd.DataFrame, filename: str, dir:str=PROCESSED_DATA_DIR) -> None:
         """
@@ -76,25 +91,34 @@ class Dataset:
         self.logger.success(f"Dataset saved to {filepath}.")
         self.logger.info(f"Dataset shape: {df.shape}")
         
-    def get_X_y(self) -> tuple[pd.DataFrame, pd.Series]:
+    def get_X_train_val_y_train_val(self) -> tuple[pd.DataFrame, pd.Series,pd.DataFrame, pd.Series]:
         """
         Get the features and target variable from the dataset.
         """
         if self.target_col not in self.df.columns:
             self.logger.error(f"Target column {self.target_col} not found in the dataset.")
             raise ValueError(f"Target column {self.target_col} not found in the dataset.")
-        X = self.df.drop(columns=[self.target_col])
-        y = self.df[self.target_col]
-        return X, y
+        X_train = self.train_df.drop(columns=[self.target_col])
+        y_train = self.train_df[self.target_col]
+        X_val = self.val_df.drop(columns=[self.target_col])
+        y_val = self.val_df[self.target_col]
+        return X_train, y_train,X_val, y_val
     
-    def save_encoders(self,model_name:str) -> None:
+    def get_X(self) -> pd.DataFrame:
+        """
+        Get the DataFrame.
+        """
+        return self.df.drop(columns=[self.id_col])
+
+    
+    def save_encoders(self,model_name:str,encoder_name:str) -> None:
         """
         Save the encoders to a file.
         """
         model_path = os.path.join(MODELS_DIR, model_name)
         if not os.path.exists(model_path):
             os.makedirs(model_path)
-        with open(os.path.join(MODELS_DIR, "encoder.pkl"), "wb") as pkl:
+        with open(os.path.join(model_path, f"{encoder_name}.pkl"), "wb") as pkl:
             pickle.dump(self.encoders, pkl)
     
     def save_scalers(self,model_name:str) -> None:
@@ -104,5 +128,5 @@ class Dataset:
         model_path = os.path.join(MODELS_DIR, model_name)
         if not os.path.exists(model_path):
             os.makedirs(model_path)
-        with open(os.path.join(MODELS_DIR, "scaler.pkl"), "wb") as pkl:
+        with open(os.path.join(model_path, "scaler.pkl"), "wb") as pkl:
             pickle.dump(self.scalers, pkl)

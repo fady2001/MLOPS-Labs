@@ -1,0 +1,168 @@
+2025-05-01 00:25:02 | INFO     | src.logger:84 - Training started
+2025-05-01 00:25:02 | SUCCESS  | src.logger:128 - Dataset loaded from E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\raw\train.csv.
+2025-05-01 00:25:02 | SUCCESS  | src.logger:128 - Dataset saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\interim\train.csv.
+2025-05-01 00:25:02 | INFO     | src.logger:84 - Dataset shape: (891, 23)
+2025-05-01 00:25:02 | SUCCESS  | src.logger:128 - Dataset saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\processed\train.csv.
+2025-05-01 00:25:02 | INFO     | src.logger:84 - Dataset shape: (891, 23)
+2025-05-01 00:25:04 | SUCCESS  | src.logger:128 - Dataset split into training and testing sets with test size 0.2.
+2025-05-01 00:25:04 | INFO     | src.logger:84 - Training set size: 712
+2025-05-01 00:25:04 | INFO     | src.logger:84 - Testing set size: 179
+2025-05-01 00:25:04 | SUCCESS  | src.logger:128 - Dataset saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\processed\train.csv.
+2025-05-01 00:25:04 | INFO     | src.logger:84 - Dataset shape: (712, 23)
+2025-05-01 00:25:04 | SUCCESS  | src.logger:128 - Dataset saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\processed\val.csv.
+2025-05-01 00:25:04 | INFO     | src.logger:84 - Dataset shape: (179, 23)
+2025-05-01 00:37:52 | INFO     | src.logger:84 - Training started
+2025-05-01 00:37:52 | SUCCESS  | src.logger:128 - Dataset loaded from E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\raw\train.csv.
+2025-05-01 00:37:52 | SUCCESS  | src.logger:128 - Dataset saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\interim\train.csv.
+2025-05-01 00:37:52 | INFO     | src.logger:84 - Dataset shape: (891, 23)
+2025-05-01 00:37:52 | SUCCESS  | src.logger:128 - Dataset saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\processed\train.csv.
+2025-05-01 00:37:52 | INFO     | src.logger:84 - Dataset shape: (891, 23)
+2025-05-01 00:37:53 | SUCCESS  | src.logger:128 - Dataset split into training and testing sets with test size 0.2.
+2025-05-01 00:37:53 | INFO     | src.logger:84 - Training set size: 712
+2025-05-01 00:37:53 | INFO     | src.logger:84 - Testing set size: 179
+2025-05-01 00:41:56 | INFO     | src.logger:84 - Training started
+2025-05-01 00:41:56 | SUCCESS  | src.logger:128 - Dataset loaded from E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\raw\train.csv.
+2025-05-01 00:41:56 | SUCCESS  | src.logger:128 - Dataset saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\interim\train.csv.
+2025-05-01 00:41:56 | INFO     | src.logger:84 - Dataset shape: (891, 23)
+2025-05-01 00:41:56 | SUCCESS  | src.logger:128 - Dataset saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\processed\train.csv.
+2025-05-01 00:41:56 | INFO     | src.logger:84 - Dataset shape: (891, 23)
+2025-05-01 00:41:57 | SUCCESS  | src.logger:128 - Dataset split into training and testing sets with test size 0.2.
+2025-05-01 00:41:57 | INFO     | src.logger:84 - Training set size: 712
+2025-05-01 00:41:57 | INFO     | src.logger:84 - Testing set size: 179
+2025-05-01 00:43:25 | INFO     | src.logger:84 - Training started
+2025-05-01 00:43:25 | SUCCESS  | src.logger:128 - Dataset loaded from E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\raw\train.csv.
+2025-05-01 00:43:26 | SUCCESS  | src.logger:128 - Dataset saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\interim\train.csv.
+2025-05-01 00:43:26 | INFO     | src.logger:84 - Dataset shape: (891, 23)
+2025-05-01 00:43:26 | SUCCESS  | src.logger:128 - Dataset saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\processed\train.csv.
+2025-05-01 00:43:26 | INFO     | src.logger:84 - Dataset shape: (891, 23)
+2025-05-01 00:43:27 | SUCCESS  | src.logger:128 - Dataset split into training and testing sets with test size 0.2.
+2025-05-01 00:43:27 | INFO     | src.logger:84 - Training set size: 712
+2025-05-01 00:43:27 | INFO     | src.logger:84 - Testing set size: 179
+2025-05-01 00:43:27 | SUCCESS  | src.logger:128 - Dataset saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\processed\train.csv.
+2025-05-01 00:43:27 | INFO     | src.logger:84 - Dataset shape: (712, 23)
+2025-05-01 00:43:27 | SUCCESS  | src.logger:128 - Dataset saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\processed\val.csv.
+2025-05-01 00:43:27 | INFO     | src.logger:84 - Dataset shape: (179, 23)
+2025-05-01 00:43:27 | SUCCESS  | src.logger:128 - Model trained.
+2025-05-01 00:43:27 | SUCCESS  | src.logger:128 - Model saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\models\random_forest.
+2025-05-01 00:43:27 | INFO     | src.logger:84 - Training finished
+2025-05-01 00:43:43 | INFO     | src.logger:84 - loading model
+2025-05-01 00:46:28 | INFO     | src.logger:84 - Training started
+2025-05-01 00:46:28 | SUCCESS  | src.logger:128 - Dataset loaded from E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\raw\train.csv.
+2025-05-01 00:46:28 | SUCCESS  | src.logger:128 - Dataset saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\interim\train.csv.
+2025-05-01 00:46:28 | INFO     | src.logger:84 - Dataset shape: (891, 23)
+2025-05-01 00:47:32 | INFO     | src.logger:84 - Training started
+2025-05-01 00:47:32 | SUCCESS  | src.logger:128 - Dataset loaded from E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\raw\train.csv.
+2025-05-01 00:47:32 | SUCCESS  | src.logger:128 - Dataset saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\interim\train.csv.
+2025-05-01 00:47:32 | INFO     | src.logger:84 - Dataset shape: (891, 23)
+2025-05-01 00:47:34 | SUCCESS  | src.logger:128 - Dataset saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\processed\train.csv.
+2025-05-01 00:47:34 | INFO     | src.logger:84 - Dataset shape: (891, 23)
+2025-05-01 00:47:37 | SUCCESS  | src.logger:128 - Dataset split into training and testing sets with test size 0.2.
+2025-05-01 00:47:38 | INFO     | src.logger:84 - Training set size: 712
+2025-05-01 00:47:40 | INFO     | src.logger:84 - Testing set size: 179
+2025-05-01 00:47:49 | SUCCESS  | src.logger:128 - Dataset saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\processed\train.csv.
+2025-05-01 00:47:50 | INFO     | src.logger:84 - Dataset shape: (712, 23)
+2025-05-01 00:47:50 | SUCCESS  | src.logger:128 - Dataset saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\processed\val.csv.
+2025-05-01 00:47:50 | INFO     | src.logger:84 - Dataset shape: (179, 23)
+2025-05-01 00:47:53 | SUCCESS  | src.logger:128 - Model trained.
+2025-05-01 00:47:54 | SUCCESS  | src.logger:128 - Model saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\models\random_forest.
+2025-05-01 00:47:56 | INFO     | src.logger:84 - Training finished
+2025-05-01 00:47:59 | INFO     | src.logger:84 - loading model
+2025-05-01 00:48:15 | INFO     | src.logger:84 - creating evaluation report
+2025-05-01 00:48:19 | INFO     | src.logger:84 - saving evaluation report
+2025-05-01 01:02:30 | INFO     | src.logger:84 - Training started
+2025-05-01 01:02:30 | SUCCESS  | src.logger:128 - Dataset loaded from E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\raw\train.csv.
+2025-05-01 01:02:30 | SUCCESS  | src.logger:128 - Dataset saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\interim\train.csv.
+2025-05-01 01:02:30 | INFO     | src.logger:84 - Dataset shape: (891, 23)
+2025-05-01 01:02:34 | SUCCESS  | src.logger:128 - Dataset saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\processed\train.csv.
+2025-05-01 01:02:34 | INFO     | src.logger:84 - Dataset shape: (891, 23)
+2025-05-01 01:02:35 | SUCCESS  | src.logger:128 - Dataset split into training and testing sets with test size 0.2.
+2025-05-01 01:02:35 | INFO     | src.logger:84 - Training set size: 712
+2025-05-01 01:02:35 | INFO     | src.logger:84 - Testing set size: 179
+2025-05-01 01:03:14 | SUCCESS  | src.logger:128 - Dataset saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\processed\train.csv.
+2025-05-01 01:03:14 | INFO     | src.logger:84 - Dataset shape: (712, 23)
+2025-05-01 01:03:15 | SUCCESS  | src.logger:128 - Dataset saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\processed\val.csv.
+2025-05-01 01:03:15 | INFO     | src.logger:84 - Dataset shape: (179, 23)
+2025-05-01 01:03:17 | SUCCESS  | src.logger:128 - Model trained.
+2025-05-01 01:03:18 | SUCCESS  | src.logger:128 - Model saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\models\random_forest.
+2025-05-01 01:03:20 | INFO     | src.logger:84 - Training finished
+2025-05-01 01:03:23 | INFO     | src.logger:84 - loading model
+2025-05-01 01:03:27 | INFO     | src.logger:84 - creating evaluation report
+2025-05-01 01:03:29 | INFO     | src.logger:84 - saving evaluation report
+2025-05-01 01:03:35 | SUCCESS  | src.logger:128 - Dataset loaded from E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\raw\test.csv.
+2025-05-01 01:03:36 | SUCCESS  | src.logger:128 - Dataset saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\interim\test.csv.
+2025-05-01 01:03:36 | INFO     | src.logger:84 - Dataset shape: (418, 22)
+2025-05-01 01:12:57 | INFO     | src.logger:84 - Training started
+2025-05-01 01:12:57 | SUCCESS  | src.logger:128 - Dataset loaded from E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\raw\train.csv.
+2025-05-01 01:12:57 | SUCCESS  | src.logger:128 - Dataset saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\interim\train.csv.
+2025-05-01 01:12:57 | INFO     | src.logger:84 - Dataset shape: (891, 23)
+2025-05-01 01:13:16 | SUCCESS  | src.logger:128 - Dataset saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\processed\train.csv.
+2025-05-01 01:13:16 | INFO     | src.logger:84 - Dataset shape: (708, 18)
+2025-05-01 01:13:17 | SUCCESS  | src.logger:128 - Dataset split into training and testing sets with test size 0.2.
+2025-05-01 01:13:17 | INFO     | src.logger:84 - Training set size: 566
+2025-05-01 01:13:17 | INFO     | src.logger:84 - Testing set size: 142
+2025-05-01 01:13:23 | SUCCESS  | src.logger:128 - Dataset saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\processed\train.csv.
+2025-05-01 01:13:23 | INFO     | src.logger:84 - Dataset shape: (566, 18)
+2025-05-01 01:13:23 | SUCCESS  | src.logger:128 - Dataset saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\processed\val.csv.
+2025-05-01 01:13:23 | INFO     | src.logger:84 - Dataset shape: (142, 18)
+2025-05-01 01:13:25 | SUCCESS  | src.logger:128 - Model trained.
+2025-05-01 01:13:26 | SUCCESS  | src.logger:128 - Model saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\models\random_forest.
+2025-05-01 01:13:28 | INFO     | src.logger:84 - Training finished
+2025-05-01 01:13:30 | INFO     | src.logger:84 - loading model
+2025-05-01 01:13:31 | INFO     | src.logger:84 - creating evaluation report
+2025-05-01 01:13:31 | INFO     | src.logger:84 - saving evaluation report
+2025-05-01 01:13:36 | SUCCESS  | src.logger:128 - Dataset loaded from E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\raw\test.csv.
+2025-05-01 01:13:37 | SUCCESS  | src.logger:128 - Dataset saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\interim\test.csv.
+2025-05-01 01:13:37 | INFO     | src.logger:84 - Dataset shape: (418, 22)
+2025-05-01 01:16:01 | INFO     | src.logger:84 - Training started
+2025-05-01 01:16:01 | SUCCESS  | src.logger:128 - Dataset loaded from E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\raw\train.csv.
+2025-05-01 01:16:01 | SUCCESS  | src.logger:128 - Dataset saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\interim\train.csv.
+2025-05-01 01:16:01 | INFO     | src.logger:84 - Dataset shape: (891, 23)
+2025-05-01 01:16:05 | SUCCESS  | src.logger:128 - Dataset saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\processed\train.csv.
+2025-05-01 01:16:05 | INFO     | src.logger:84 - Dataset shape: (708, 18)
+2025-05-01 01:16:05 | SUCCESS  | src.logger:128 - Dataset split into training and testing sets with test size 0.2.
+2025-05-01 01:16:05 | INFO     | src.logger:84 - Training set size: 566
+2025-05-01 01:16:05 | INFO     | src.logger:84 - Testing set size: 142
+2025-05-01 01:16:57 | INFO     | src.logger:84 - Training started
+2025-05-01 01:16:57 | SUCCESS  | src.logger:128 - Dataset loaded from E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\raw\train.csv.
+2025-05-01 01:16:57 | SUCCESS  | src.logger:128 - Dataset saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\interim\train.csv.
+2025-05-01 01:16:57 | INFO     | src.logger:84 - Dataset shape: (891, 23)
+2025-05-01 01:17:06 | SUCCESS  | src.logger:128 - Dataset saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\processed\train.csv.
+2025-05-01 01:17:06 | INFO     | src.logger:84 - Dataset shape: (515, 17)
+2025-05-01 01:17:06 | SUCCESS  | src.logger:128 - Dataset split into training and testing sets with test size 0.2.
+2025-05-01 01:17:06 | INFO     | src.logger:84 - Training set size: 412
+2025-05-01 01:17:06 | INFO     | src.logger:84 - Testing set size: 103
+2025-05-01 01:17:08 | SUCCESS  | src.logger:128 - Dataset saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\processed\train.csv.
+2025-05-01 01:17:08 | INFO     | src.logger:84 - Dataset shape: (412, 17)
+2025-05-01 01:17:08 | SUCCESS  | src.logger:128 - Dataset saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\processed\val.csv.
+2025-05-01 01:17:08 | INFO     | src.logger:84 - Dataset shape: (103, 17)
+2025-05-01 01:17:08 | SUCCESS  | src.logger:128 - Model trained.
+2025-05-01 01:17:08 | SUCCESS  | src.logger:128 - Model saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\models\random_forest.
+2025-05-01 01:17:08 | INFO     | src.logger:84 - Training finished
+2025-05-01 01:17:11 | INFO     | src.logger:84 - loading model
+2025-05-01 01:17:11 | INFO     | src.logger:84 - creating evaluation report
+2025-05-01 01:17:11 | INFO     | src.logger:84 - saving evaluation report
+2025-05-01 01:17:15 | SUCCESS  | src.logger:128 - Dataset loaded from E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\raw\test.csv.
+2025-05-01 01:17:16 | SUCCESS  | src.logger:128 - Dataset saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\interim\test.csv.
+2025-05-01 01:17:16 | INFO     | src.logger:84 - Dataset shape: (418, 22)
+2025-05-01 01:20:08 | INFO     | src.logger:84 - Training started
+2025-05-01 01:20:08 | SUCCESS  | src.logger:128 - Dataset loaded from E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\raw\train.csv.
+2025-05-01 01:20:08 | SUCCESS  | src.logger:128 - Dataset saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\interim\train.csv.
+2025-05-01 01:20:08 | INFO     | src.logger:84 - Dataset shape: (891, 23)
+2025-05-01 01:20:11 | SUCCESS  | src.logger:128 - Dataset saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\processed\train.csv.
+2025-05-01 01:20:11 | INFO     | src.logger:84 - Dataset shape: (515, 17)
+2025-05-01 01:20:11 | SUCCESS  | src.logger:128 - Dataset split into training and testing sets with test size 0.2.
+2025-05-01 01:20:11 | INFO     | src.logger:84 - Training set size: 412
+2025-05-01 01:20:11 | INFO     | src.logger:84 - Testing set size: 103
+2025-05-01 01:20:28 | SUCCESS  | src.logger:128 - Dataset saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\processed\train.csv.
+2025-05-01 01:20:28 | INFO     | src.logger:84 - Dataset shape: (412, 17)
+2025-05-01 01:20:28 | SUCCESS  | src.logger:128 - Dataset saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\processed\val.csv.
+2025-05-01 01:20:28 | INFO     | src.logger:84 - Dataset shape: (103, 17)
+2025-05-01 01:20:28 | SUCCESS  | src.logger:128 - Model trained.
+2025-05-01 01:20:28 | SUCCESS  | src.logger:128 - Model saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\models\random_forest.
+2025-05-01 01:20:28 | INFO     | src.logger:84 - Training finished
+2025-05-01 01:20:30 | INFO     | src.logger:84 - loading model
+2025-05-01 01:20:30 | INFO     | src.logger:84 - creating evaluation report
+2025-05-01 01:20:30 | INFO     | src.logger:84 - saving evaluation report
+2025-05-01 01:20:30 | SUCCESS  | src.logger:128 - Dataset loaded from E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\raw\test.csv.
+2025-05-01 01:20:30 | SUCCESS  | src.logger:128 - Dataset saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\interim\test.csv.
+2025-05-01 01:20:30 | INFO     | src.logger:84 - Dataset shape: (418, 22)

@@ -10,7 +10,7 @@ from src.logger import ExecutorLogger
 
 def evaluate(X_test, y_test, model_name: str, logger:ExecutorLogger) -> None:
     logger.info("loading model")
-    with open(os.path.join(MODELS_DIR, model_name, "final_model.pkl"), "rb") as pkl:
+    with open(os.path.join(MODELS_DIR, model_name, f"{model_name}.pkl"), "rb") as pkl:
         final_model = pickle.load(pkl)
  
     final_report = EstimatorReport(final_model, X_test=X_test, y_test=y_test)
