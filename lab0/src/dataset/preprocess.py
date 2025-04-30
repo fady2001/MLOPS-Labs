@@ -41,7 +41,7 @@ def before_split_preprocess(df:pd.DataFrame) -> Tuple[pd.DataFrame, dict]:
     df.drop_duplicates(inplace=True)
     return df, label_encoders
 
-def after_split_preprocess(df:pd.DataFrame, scaler:StandardScaler) -> Tuple[pd.DataFrame, StandardScaler]:
+def after_split_preprocess(df:pd.DataFrame) -> Tuple[pd.DataFrame, StandardScaler]:
     """Preprocess the dataset after splitting"""
     df = handle_missing_values(df)
     df,scaler = scale_features(df)

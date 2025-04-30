@@ -1,7 +1,10 @@
+import os
+import pickle
+
 import pandas as pd
 from sklearn.model_selection import train_test_split
 
-from src.config import INTERIM_DATA_DIR, PROCESSED_DATA_DIR, RAW_DATA_DIR
+from src.config import INTERIM_DATA_DIR, MODELS_DIR, PROCESSED_DATA_DIR, RAW_DATA_DIR
 from src.dataset.features import extract_features
 from src.dataset.preprocess import after_split_preprocess, before_split_preprocess, process_test
 from src.logger import ExecutorLogger
@@ -18,7 +21,7 @@ class Dataset:
         self.logger:ExecutorLogger = logger
         self.df:pd.DataFrame = self.load_dataset(filename, id_col, logger)
         self.encoders = None
-        self.scaler = None
+        self.scalers = None
         
     def load_dataset(self,filename: str, id_col:str, logger:ExecutorLogger) -> pd.DataFrame:
         """
@@ -59,8 +62,8 @@ class Dataset:
         preprocessed_df,self.encoder = before_split_preprocess(self.df)
         self.save_dataset(preprocessed_df, filename="train.csv", dir=PROCESSED_DATA_DIR)
         train_df, val_df = self.split_dataset(preprocessed_df)
-        preprocessed_train_df,scaler = after_split_preprocess(train_df, self.scaler)
-        preprocessed_val_df = process_test(val_df, self.encoder, scaler)
+        preprocessed_train_df,self.scalers = after_split_preprocess(train_df)
+        preprocessed_val_df = process_test(val_df, self.encoder, self.scalers)
         self.save_dataset(preprocessed_train_df, filename="train.csv", dir=PROCESSED_DATA_DIR)
         self.save_dataset(preprocessed_val_df, filename="val.csv", dir=PROCESSED_DATA_DIR)
         
@@ -72,3 +75,34 @@ class Dataset:
         df.to_csv(filepath, sep=",")
         self.logger.success(f"Dataset saved to {filepath}.")
         self.logger.info(f"Dataset shape: {df.shape}")
+        
+    def get_X_y(self) -> tuple[pd.DataFrame, pd.Series]:
+        """
+        Get the features and target variable from the dataset.
+        """
+        if self.target_col not in self.df.columns:
+            self.logger.error(f"Target column {self.target_col} not found in the dataset.")
+            raise ValueError(f"Target column {self.target_col} not found in the dataset.")
+        X = self.df.drop(columns=[self.target_col])
+        y = self.df[self.target_col]
+        return X, y
+    
+    def save_encoders(self,model_name:str) -> None:
+        """
+        Save the encoders to a file.
+        """
+        model_path = os.path.join(MODELS_DIR, model_name)
+        if not os.path.exists(model_path):
+            os.makedirs(model_path)
+        with open(os.path.join(MODELS_DIR, "encoder.pkl"), "wb") as pkl:
+            pickle.dump(self.encoders, pkl)
+    
+    def save_scalers(self,model_name:str) -> None:
+        """
+        Save the scalers to a file.
+        """
+        model_path = os.path.join(MODELS_DIR, model_name)
+        if not os.path.exists(model_path):
+            os.makedirs(model_path)
+        with open(os.path.join(MODELS_DIR, "scaler.pkl"), "wb") as pkl:
+            pickle.dump(self.scalers, pkl)
