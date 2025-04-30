@@ -1,11 +1,11 @@
 import pandas as pd
 from sklearn.model_selection import train_test_split
 
-from config import RAW_DATA_DIR
-from logger import ExecutorLogger
+from src.config import RAW_DATA_DIR
+from src.logger import ExecutorLogger
 
 
-class DatasetLoader:
+class Dataset:
     
     @staticmethod
     def load_dataset(filename: str, id_col:str, logger:ExecutorLogger) -> pd.DataFrame:
@@ -17,8 +17,10 @@ class DatasetLoader:
         if not filepath.exists() or not filepath.is_file():
             logger.error(f"File {filepath} does not exist or is not a file.")
             raise FileNotFoundError(f"File {filepath} does not exist or is not a file.")
-        df = pd.read_csv(filepath, sep=",", header=0, index_col=0)
-        df.columns = df.columns.str.strip()
+        df = pd.read_csv(filepath, sep=",")
+        if id_col not in df.columns:
+            logger.error(f"Column {id_col} not found in the dataset.")
+            raise ValueError(f"Column {id_col} not found in the dataset.")
         df.set_index(id_col, inplace=True)
         logger.success(f"Dataset loaded from {filepath}.")
         return df
