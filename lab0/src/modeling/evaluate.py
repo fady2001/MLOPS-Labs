@@ -2,6 +2,7 @@ import json
 import os
 import pickle
 
+import pandas as pd
 from skore import EstimatorReport
 
 from src.config import MODELS_DIR, REPORTS_DIR
@@ -31,3 +32,15 @@ def evaluate(X_test, y_test, model_name: str, logger:ExecutorLogger) -> None:
         os.path.join(REPORTS_DIR, model_name, "evaluation_report.json"), "w"
     ) as js:
         json.dump(evaluation_report, js, indent=4)
+        
+def generate_submission_file(
+    model_name: str, X_test,test_id, logger:ExecutorLogger
+) -> None:
+    logger.info("loading model")
+    with open(os.path.join(MODELS_DIR, model_name, f"{model_name}.pkl"), "rb") as pkl:
+        final_model = pickle.load(pkl)
+    logger.info("creating submission file")
+    submission_df = pd.DataFrame()
+    submission_df["PassengerId"] = test_id
+    submission_df["Survived"] = final_model.predict(X_test)
+    submission_df.to_csv(os.path.join(MODELS_DIR, model_name, "submission.csv"), index=False)

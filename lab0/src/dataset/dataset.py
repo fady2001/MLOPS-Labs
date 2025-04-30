@@ -1,5 +1,6 @@
 import os
 import pickle
+from typing import Tuple
 
 import pandas as pd
 from sklearn.model_selection import train_test_split
@@ -22,6 +23,7 @@ class Dataset:
         self.df:pd.DataFrame = self.load_dataset(filename, id_col, logger)
         self.encoders = encoder
         self.scalers = scaler
+        self.test_id = self.df[self.id_col]
         
     def load_dataset(self,filename: str, id_col:str, logger:ExecutorLogger) -> pd.DataFrame:
         """
@@ -36,7 +38,6 @@ class Dataset:
         if id_col not in df.columns:
             self.logger.error(f"Column {id_col} not found in the dataset.")
             raise ValueError(f"Column {id_col} not found in the dataset.")
-        df.set_index(id_col, inplace=True)
         self.logger.success(f"Dataset loaded from {filepath}.")
         return df
 
@@ -74,7 +75,7 @@ class Dataset:
         Preprocess the test dataset.
         """
         # drop column with more than 100 unique values
-        self.df = self.df.loc[:,self.df.nunique() < 15]        
+        self.df = self.df.loc[:,self.df.nunique() < 15]     
         if self.encoders is None or self.scalers is None:
             self.logger.error("Encoders and scalers are not available. Please preprocess the training dataset first.")
             raise ValueError("Encoders and scalers are not available. Please preprocess the training dataset first.")
@@ -104,12 +105,12 @@ class Dataset:
         y_val = self.val_df[self.target_col]
         return X_train, y_train,X_val, y_val
     
-    def get_X(self) -> pd.DataFrame:
+    def get_test(self) -> Tuple[pd.DataFrame,pd.Series]:
         """
         Get the DataFrame.
         """
-        return self.df.drop(columns=[self.id_col])
-
+        return self.df,self.test_id
+    
     
     def save_encoders(self,model_name:str,encoder_name:str) -> None:
         """
