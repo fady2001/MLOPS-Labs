@@ -1,11 +1,17 @@
-from src.dataset import Dataset
+from src.dataset.dataset import Dataset
 from src.logger import ExecutorLogger
 
 
-def main(logger) -> None:
+def main(logger:ExecutorLogger) -> None:
     logger.info("Training started")
-    df = Dataset.load_dataset("train.csv", "PassengerId", logger)
-    train,test  = Dataset.split_dataset(df, logger, train_size=0.8)
+    ds = Dataset(
+        filename="train.csv",
+        id_col="PassengerId",
+        target_col="Survived",
+        logger=logger
+    )
+    ds.engineer_features()
+    ds.preprocess_dataset()
     logger.info("Training finished")
 
 
