@@ -1,7 +1,16 @@
 # Data
 /data/
-
 /models/
+# data/*
+# !data/**/
+# data/**/*.*
+# !data/**/*.dvc
+
+# /models/*
+# !models/**/
+# models/**/*.*
+# !models/**/*.dvc
+
 /logs/
 /outputs/
 

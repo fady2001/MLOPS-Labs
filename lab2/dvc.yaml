@@ -1,0 +1,31 @@
+stages:
+  engineer_features:
+    cmd: uv run src/feature_engineering.py
+    deps:
+    - data/raw
+    - src/feature_engineering.py
+    outs:
+    - data/interim/train.csv
+  prepare:
+    cmd: uv run src/preprocess.py
+    deps:
+    - data/interim
+    - src/preprocess.py
+    outs:
+    - data/processed/train.csv
+    - data/processed/val.csv
+    - models/random_forest/label_encoder.pkl
+    - models/random_forest/scaler.pkl
+  train:
+    cmd: uv run src/training.py
+    deps:
+    - data/processed
+    - src/preprocess.py
+    outs:
+    - models/random_forest/random_forest.pkl
+  evaluate:
+    cmd: uv run src/evaluate.py
+    deps:
+    - data/processed
+    - models/random_forest/random_forest.pkl
+    - src/training.py
