@@ -1,0 +1,81 @@
+schema: '2.0'
+stages:
+  prepare:
+    cmd: uv run src/preprocess.py
+    deps:
+    - path: data/interim
+      hash: md5
+      md5: b386a3dfdc750fe59522616abeb4744a.dir
+      size: 100701
+      nfiles: 1
+    - path: src/preprocess.py
+      hash: md5
+      md5: 64061166cd29a0264d7aebdfd1b5658a
+      size: 881
+    outs:
+    - path: data/processed/train.csv
+      hash: md5
+      md5: d1566d339afeb77f1e95da8ab7c6b109
+      size: 139732
+    - path: data/processed/val.csv
+      hash: md5
+      md5: 19e10261a9fe3056076970aaaf85f422
+      size: 25037
+    - path: models/random_forest/label_encoder.pkl
+      hash: md5
+      md5: 15f514d9604b176ad14106d535214bec
+      size: 645
+    - path: models/random_forest/scaler.pkl
+      hash: md5
+      md5: 468b9c3efa6b3eae6c9cea5d2345e00f
+      size: 1095
+  engineer_features:
+    cmd: uv run src/feature_engineering.py
+    deps:
+    - path: data/raw
+      hash: md5
+      md5: 2e92afb04cc1088e96c965b66ea57b1b.dir
+      size: 93081
+      nfiles: 3
+    - path: src/feature_engineering.py
+      hash: md5
+      md5: a708a2db2667a473b6d625433d60e284
+      size: 648
+    outs:
+    - path: data/interim/train.csv
+      hash: md5
+      md5: bce918191608c71297f1130d7448245c
+      size: 100701
+  train:
+    cmd: uv run src/training.py
+    deps:
+    - path: data/processed
+      hash: md5
+      md5: c8690dae7b119b1758993c54dd701023.dir
+      size: 164769
+      nfiles: 2
+    - path: src/preprocess.py
+      hash: md5
+      md5: 64061166cd29a0264d7aebdfd1b5658a
+      size: 881
+    outs:
+    - path: models/random_forest/random_forest.pkl
+      hash: md5
+      md5: b101f092ebe4a53a04724bea1ca97c45
+      size: 385250
+  evaluate:
+    cmd: uv run src/evaluate.py
+    deps:
+    - path: data/processed
+      hash: md5
+      md5: c8690dae7b119b1758993c54dd701023.dir
+      size: 164769
+      nfiles: 2
+    - path: models/random_forest/random_forest.pkl
+      hash: md5
+      md5: 6f46181716881f94166f0b4d893f9ac7
+      size: 651
+    - path: src/training.py
+      hash: md5
+      md5: 997403c9bcd80a611ce0d265fd525c98
+      size: 1095
