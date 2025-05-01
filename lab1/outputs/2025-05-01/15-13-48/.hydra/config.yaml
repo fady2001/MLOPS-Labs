@@ -1,0 +1,45 @@
+pipeline:
+  working_dir: ${hydra:runtime.cwd}
+  data:
+    raw_data_path: ${pipeline.working_dir}/data/raw
+    processed_data_path: ${pipeline.working_dir}/data/processed
+    interim_data_path: ${pipeline.working_dir}/data/interim
+    file_name: train.csv
+    val_name: val.csv
+    id_col: PassengerId
+    target_col: Survived
+    test_size: 0.15
+    random_state: 42
+    model_path: ${pipeline.model.model_path}
+  test:
+    raw_data_path: ${pipeline.data.raw_data_path}
+    file_name: test.csv
+    id_col: ${pipeline.data.id_col}
+    target_col: None
+  model:
+    processed_data_path: ${pipeline.data.processed_data_path}
+    file_name: ${pipeline.data.file_name}
+    target_column: ${pipeline.data.target_column}
+    model_name: random_forest
+    model_path: ${pipeline.working_dir}/models
+    trained_model_path: ${pipeline.model.model_path}/${pipeline.model.model_name}
+    optimization_params:
+      n_folds: 5
+      max_evals: 10
+      scoring: accuracy
+      hyperparameter_search:
+        random_state:
+          name: random_state
+          type: int
+          min: 2
+          max: 80
+          step: 1
+  evaluate:
+    model_name: ${pipeline.model.model_name}
+    model_path: ${pipeline.model.model_path}
+    trained_model_path: ${pipeline.model.trained_model_path}
+    reports_path: ${pipeline.working_dir}/reports
+    id_col: ${pipeline.data.id_col}
+    target_col: ${pipeline.data.target_col}
+  save:
+    encoder_name: label_encoder
