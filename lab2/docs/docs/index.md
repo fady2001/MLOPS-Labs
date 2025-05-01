@@ -1,4 +1,4 @@
-# Lab1 documentation!
+# Lab2 documentation!
 
 ## Description
 
