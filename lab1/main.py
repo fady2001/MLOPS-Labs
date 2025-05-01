@@ -20,8 +20,8 @@ def main(cfg: DictConfig) -> None:
     model = RandomForestClassifier(n_estimators=100, max_depth=5, random_state=1)
     X_train, y_train, X_val, y_val = train_ds.get_X_train_val_y_train_val()
     train(model, X_train,y_train, logger)
-    evaluate(X_val, y_val, cfg=cfg.pipeline.evaluate, logger=logger)
     save_components(model, model_name=cfg.pipeline.model.model_name, ds=train_ds, encoder_name=cfg.pipeline.save.encoder_name, logger=logger)
+    evaluate(X_val, y_val, cfg=cfg.pipeline.evaluate, logger=logger)
     logger.info("Training finished")
     
     test_df = Dataset(
