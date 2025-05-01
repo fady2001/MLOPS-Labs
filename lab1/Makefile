@@ -2,7 +2,7 @@
 # GLOBALS                                                                       #
 #################################################################################
 
-PROJECT_NAME = lab0
+PROJECT_NAME = lab1
 PYTHON_VERSION = 3.11
 PYTHON_INTERPRETER = python
 

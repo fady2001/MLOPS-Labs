@@ -1,42 +1,42 @@
 2025-04-30 21:36:10 | INFO     | src.logger:84 - Training started
-2025-04-30 21:36:12 | SUCCESS  | src.logger:128 - Dataset loaded from E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\raw\train.csv.
-2025-04-30 21:36:14 | SUCCESS  | src.logger:128 - Dataset saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\interim\train.csv.
+2025-04-30 21:36:12 | SUCCESS  | src.logger:128 - Dataset loaded from E:\ITI Data science\MLOps\MLOPS-Labs\lab1\data\raw\train.csv.
+2025-04-30 21:36:14 | SUCCESS  | src.logger:128 - Dataset saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab1\data\interim\train.csv.
 2025-04-30 21:36:14 | INFO     | src.logger:84 - Dataset shape: (891, 23)
 2025-04-30 21:37:03 | INFO     | src.logger:84 - Training started
-2025-04-30 21:37:04 | SUCCESS  | src.logger:128 - Dataset loaded from E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\raw\train.csv.
-2025-04-30 21:37:04 | SUCCESS  | src.logger:128 - Dataset saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\interim\train.csv.
+2025-04-30 21:37:04 | SUCCESS  | src.logger:128 - Dataset loaded from E:\ITI Data science\MLOps\MLOPS-Labs\lab1\data\raw\train.csv.
+2025-04-30 21:37:04 | SUCCESS  | src.logger:128 - Dataset saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab1\data\interim\train.csv.
 2025-04-30 21:37:04 | INFO     | src.logger:84 - Dataset shape: (891, 23)
-2025-04-30 21:37:30 | SUCCESS  | src.logger:128 - Dataset saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\processed\train.csv.
+2025-04-30 21:37:30 | SUCCESS  | src.logger:128 - Dataset saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab1\data\processed\train.csv.
 2025-04-30 21:37:30 | INFO     | src.logger:84 - Dataset shape: (891, 23)
 2025-04-30 21:39:01 | INFO     | src.logger:84 - Training started
-2025-04-30 21:39:01 | SUCCESS  | src.logger:128 - Dataset loaded from E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\raw\train.csv.
-2025-04-30 21:39:01 | SUCCESS  | src.logger:128 - Dataset saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\interim\train.csv.
+2025-04-30 21:39:01 | SUCCESS  | src.logger:128 - Dataset loaded from E:\ITI Data science\MLOps\MLOPS-Labs\lab1\data\raw\train.csv.
+2025-04-30 21:39:01 | SUCCESS  | src.logger:128 - Dataset saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab1\data\interim\train.csv.
 2025-04-30 21:39:01 | INFO     | src.logger:84 - Dataset shape: (891, 23)
-2025-04-30 21:39:05 | SUCCESS  | src.logger:128 - Dataset saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\processed\train.csv.
+2025-04-30 21:39:05 | SUCCESS  | src.logger:128 - Dataset saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab1\data\processed\train.csv.
 2025-04-30 21:39:05 | INFO     | src.logger:84 - Dataset shape: (891, 23)
 2025-04-30 21:39:44 | INFO     | src.logger:84 - Training started
-2025-04-30 21:39:44 | SUCCESS  | src.logger:128 - Dataset loaded from E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\raw\train.csv.
-2025-04-30 21:39:44 | SUCCESS  | src.logger:128 - Dataset saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\interim\train.csv.
+2025-04-30 21:39:44 | SUCCESS  | src.logger:128 - Dataset loaded from E:\ITI Data science\MLOps\MLOPS-Labs\lab1\data\raw\train.csv.
+2025-04-30 21:39:44 | SUCCESS  | src.logger:128 - Dataset saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab1\data\interim\train.csv.
 2025-04-30 21:39:44 | INFO     | src.logger:84 - Dataset shape: (891, 23)
-2025-04-30 21:39:48 | SUCCESS  | src.logger:128 - Dataset saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\processed\train.csv.
+2025-04-30 21:39:48 | SUCCESS  | src.logger:128 - Dataset saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab1\data\processed\train.csv.
 2025-04-30 21:39:48 | INFO     | src.logger:84 - Dataset shape: (891, 23)
 2025-04-30 21:41:18 | INFO     | src.logger:84 - Training started
-2025-04-30 21:41:18 | SUCCESS  | src.logger:128 - Dataset loaded from E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\raw\train.csv.
-2025-04-30 21:41:18 | SUCCESS  | src.logger:128 - Dataset saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\interim\train.csv.
+2025-04-30 21:41:18 | SUCCESS  | src.logger:128 - Dataset loaded from E:\ITI Data science\MLOps\MLOPS-Labs\lab1\data\raw\train.csv.
+2025-04-30 21:41:18 | SUCCESS  | src.logger:128 - Dataset saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab1\data\interim\train.csv.
 2025-04-30 21:41:18 | INFO     | src.logger:84 - Dataset shape: (891, 23)
-2025-04-30 21:41:23 | SUCCESS  | src.logger:128 - Dataset saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\processed\train.csv.
+2025-04-30 21:41:23 | SUCCESS  | src.logger:128 - Dataset saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab1\data\processed\train.csv.
 2025-04-30 21:41:23 | INFO     | src.logger:84 - Dataset shape: (891, 23)
 2025-04-30 21:42:37 | INFO     | src.logger:84 - Training started
-2025-04-30 21:42:37 | SUCCESS  | src.logger:128 - Dataset loaded from E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\raw\train.csv.
-2025-04-30 21:42:37 | SUCCESS  | src.logger:128 - Dataset saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\interim\train.csv.
+2025-04-30 21:42:37 | SUCCESS  | src.logger:128 - Dataset loaded from E:\ITI Data science\MLOps\MLOPS-Labs\lab1\data\raw\train.csv.
+2025-04-30 21:42:37 | SUCCESS  | src.logger:128 - Dataset saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab1\data\interim\train.csv.
 2025-04-30 21:42:37 | INFO     | src.logger:84 - Dataset shape: (891, 23)
-2025-04-30 21:42:42 | SUCCESS  | src.logger:128 - Dataset saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\processed\train.csv.
+2025-04-30 21:42:42 | SUCCESS  | src.logger:128 - Dataset saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab1\data\processed\train.csv.
 2025-04-30 21:42:42 | INFO     | src.logger:84 - Dataset shape: (891, 23)
 2025-04-30 21:42:46 | SUCCESS  | src.logger:128 - Dataset split into training and testing sets with test size 0.2.
 2025-04-30 21:42:46 | INFO     | src.logger:84 - Training set size: 712
 2025-04-30 21:42:47 | INFO     | src.logger:84 - Testing set size: 179
-2025-04-30 21:43:12 | SUCCESS  | src.logger:128 - Dataset saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\processed\train.csv.
+2025-04-30 21:43:12 | SUCCESS  | src.logger:128 - Dataset saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab1\data\processed\train.csv.
 2025-04-30 21:43:12 | INFO     | src.logger:84 - Dataset shape: (712, 23)
-2025-04-30 21:43:12 | SUCCESS  | src.logger:128 - Dataset saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\processed\val.csv.
+2025-04-30 21:43:12 | SUCCESS  | src.logger:128 - Dataset saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab1\data\processed\val.csv.
 2025-04-30 21:43:12 | INFO     | src.logger:84 - Dataset shape: (179, 23)
 2025-04-30 21:43:13 | INFO     | src.logger:84 - Training finished
