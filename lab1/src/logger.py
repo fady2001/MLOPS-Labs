@@ -33,7 +33,7 @@ class ExecutorLogger:
 
         if logs_path:
             self.logger.add(
-                Path("logs")
+                Path.cwd() / Path("logs")
                 / Path(logs_path)
                 / f"logs_{datetime.now().strftime('%Y%m%d')}.log",
                 level=level,
