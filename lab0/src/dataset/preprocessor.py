@@ -1,6 +1,5 @@
 from typing import Dict, List, Tuple
 
-from category_encoders import TargetEncoder
 import numpy as np
 import pandas as pd
 from sklearn.base import BaseEstimator
@@ -12,6 +11,7 @@ from sklearn.preprocessing import (
     OrdinalEncoder,
     RobustScaler,
     StandardScaler,
+    TargetEncoder,
 )
 
 from globals import logger
