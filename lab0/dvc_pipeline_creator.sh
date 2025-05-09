@@ -15,3 +15,17 @@ dvc stage add -n preprocess \
     --force \
     uv run src/preprocessing.py
 
+dvc stage add -n train \
+    -d data/processed/train.csv \
+    -d src/training.py \
+    -d models/random_forest/columns_transformer.pkl \
+    -o models/random_forest/random_forest.pkl \
+    -p paths \
+    -p dataset \
+    -p names \
+    -p hyperparameters \
+    -p tuning \
+    -p pipeline_config \
+    --force \
+    uv run src/training.py
+

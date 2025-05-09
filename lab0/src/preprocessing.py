@@ -60,7 +60,7 @@ if __name__ == "__main__":
     X_train, y_train, X_val, y_val, preprocessor = preprocess_train(train_ds, cfg)
 
     Saver.save_model(
-        model=preprocessor,
+        model=preprocessor.get_pipeline(),
         model_name=cfg["names"]["columns_transformer"],
         dir=os.path.join(cfg["paths"]["models_parent_dir"], cfg["names"]["model_name"]),
     )

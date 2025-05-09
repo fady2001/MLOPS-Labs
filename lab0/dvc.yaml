@@ -17,3 +17,18 @@ stages:
     - paths
     - pipeline_config
     - tuning
+  train:
+    cmd: uv run src/training.py
+    deps:
+    - data/processed/train.csv
+    - models/random_forest/columns_transformer.pkl
+    - src/training.py
+    params:
+    - dataset
+    - hyperparameters
+    - names
+    - paths
+    - pipeline_config
+    - tuning
+    outs:
+    - models/random_forest/random_forest.pkl
