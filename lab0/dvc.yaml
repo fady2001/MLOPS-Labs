@@ -25,6 +25,7 @@ stages:
     - src/training.py
     params:
     - dataset
+    - flags
     - hyperparameters
     - names
     - paths

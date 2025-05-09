@@ -119,14 +119,16 @@ stages:
       size: 3773
     - path: src/training.py
       hash: md5
-      md5: 0328ea737fbda8b5cc00e4771632d573
-      size: 2472
+      md5: 0003b7bc500c8b7210908134395835d4
+      size: 3061
     params:
       params.yaml:
         dataset:
           target_col: Survived
           id_col: PassengerId
           test_size: 0.2
+        flags:
+          use_mlflow: true
         hyperparameters:
           random_forest:
             n_estimators: 100
@@ -198,8 +200,8 @@ stages:
     outs:
     - path: models/random_forest/random_forest.pkl
       hash: md5
-      md5: 04c1581bab0a07c36f8892a32b9ef8d6
-      size: 2209658
+      md5: 47a8a20e7ce0f3b9ca8130b10d2f5329
+      size: 584397
   evaluate:
     cmd: uv run src/evaluate.py
     deps:
@@ -209,8 +211,8 @@ stages:
       size: 15557
     - path: models/random_forest/random_forest.pkl
       hash: md5
-      md5: 04c1581bab0a07c36f8892a32b9ef8d6
-      size: 2209658
+      md5: 47a8a20e7ce0f3b9ca8130b10d2f5329
+      size: 584397
     - path: src/evaluate.py
       hash: md5
       md5: 32724ff729e961f0ee1e097d2f0ae81e
@@ -292,5 +294,5 @@ stages:
     outs:
     - path: reports/random_forest/evaluation_report.json
       hash: md5
-      md5: 6052ba8a573118be9286f45336d24b9f
+      md5: ca6f4f943a8321ae088f2cbf9b0a8757
       size: 423

@@ -3,6 +3,7 @@ import pickle
 from typing import Dict
 
 import dvc.api
+import mlflow
 import numpy as np
 import pandas as pd
 from sklearn.base import BaseEstimator
@@ -12,6 +13,8 @@ from sklearn.pipeline import Pipeline
 
 from globals import logger
 from saver import Saver
+from tracking import log_and_register_model_with_mlflow, move_model_to_prod
+from utils import authenticate
 
 
 def train(model: BaseEstimator, X_train: np.ndarray, y_train: np.ndarray) -> None:
@@ -48,7 +51,7 @@ def train_RandomizedSearchCV(
     logger.info(f"Best score: {search.best_score_}")
 
     logger.success("Randomized Search CV completed.")
-    return search.best_estimator_
+    return search.best_estimator_, search.best_params_
 
 
 if __name__ == "__main__":
@@ -58,7 +61,6 @@ if __name__ == "__main__":
     )
     y_train = X_train.pop(cfg["dataset"]["target_col"])
 
-    # load column transofrmer
     path = os.path.join(
         cfg["paths"]["models_parent_dir"],
         cfg["names"]["model_name"],
@@ -69,7 +71,7 @@ if __name__ == "__main__":
 
     model = RandomForestClassifier(**cfg["hyperparameters"]["random_forest"])
 
-    model = train_RandomizedSearchCV(model, cfg, X_train, y_train)
+    model, params = train_RandomizedSearchCV(model, cfg, X_train, y_train)
 
     full_pipeline = Pipeline(
         steps=[
@@ -82,6 +84,23 @@ if __name__ == "__main__":
         full_pipeline,
         model_name=cfg["names"]["model_name"],
         dir=os.path.join(cfg["paths"]["models_parent_dir"], cfg["names"]["model_name"]),
+    )
+
+    client: mlflow.client.MlflowClient = authenticate(cfg)
+
+    model_details, run_id = log_and_register_model_with_mlflow(
+        final_model=full_pipeline,
+        test_df=pd.read_csv(
+            os.path.join(cfg["paths"]["data"]["interim_data"], cfg["names"]["train_data"]),
+            sep=",",
+        ),
+        cfg=cfg,
+        params=params,
+    )
+
+    move_model_to_prod(
+        client=client,
+        model_details=model_details,
     )
 
     logger.info("Training finished")

@@ -26,6 +26,7 @@ dvc stage add -n train \
     -p hyperparameters \
     -p tuning \
     -p pipeline_config \
+    -p flags \
     --force \
     uv run src/training.py
 
