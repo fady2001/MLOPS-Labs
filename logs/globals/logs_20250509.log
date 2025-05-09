@@ -416,3 +416,84 @@
 2025-05-09 11:34:22 | SUCCESS  | logger:126 - Dataset loaded from E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\interim\val.csv.
 2025-05-09 11:34:22 | INFO     | logger:82 - creating evaluation report
 2025-05-09 11:34:22 | INFO     | logger:82 - saving evaluation report
+2025-05-09 11:40:33 | INFO     | logger:82 - Training started
+2025-05-09 11:40:33 | SUCCESS  | logger:126 - Dataset loaded from E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\raw\train.csv.
+2025-05-09 11:40:33 | SUCCESS  | logger:126 - Feature engineering completed.
+2025-05-09 11:40:33 | SUCCESS  | logger:126 - Dataset saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\interim\train.csv.
+2025-05-09 11:40:33 | SUCCESS  | logger:126 - Dataset split into training and testing sets.
+2025-05-09 11:40:33 | SUCCESS  | logger:126 - Dataset saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\interim\train.csv.
+2025-05-09 11:40:33 | SUCCESS  | logger:126 - Dataset saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\interim\val.csv.
+2025-05-09 11:40:33 | INFO     | logger:82 - Columns to drop: ['PassengerId', 'Name', 'Ticket', 'Cabin']
+2025-05-09 11:40:33 | INFO     | logger:82 - X_train shape: (713, 11)
+2025-05-09 11:40:33 | INFO     | logger:82 - X_val shape: (178, 11)
+2025-05-09 11:40:33 | INFO     | logger:82 - y_train shape: (713,)
+2025-05-09 11:40:33 | INFO     | logger:82 - y_val shape: (178,)
+2025-05-09 11:40:33 | SUCCESS  | logger:126 - Preprocessing train completed.
+2025-05-09 11:40:33 | SUCCESS  | logger:126 - Model trained.
+2025-05-09 11:40:33 | SUCCESS  | logger:126 - Processed data saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\processed\train.csv.
+2025-05-09 11:40:33 | SUCCESS  | logger:126 - Processed data saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\processed\val.csv.
+2025-05-09 11:40:33 | SUCCESS  | logger:126 - Model saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\models\random_forest\random_forest.pkl.
+2025-05-09 11:40:33 | INFO     | logger:82 - Training finished
+2025-05-09 11:40:33 | INFO     | logger:82 - loading model
+2025-05-09 11:40:34 | SUCCESS  | logger:126 - Dataset loaded from E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\interim\val.csv.
+2025-05-09 11:40:34 | INFO     | logger:82 - creating evaluation report
+2025-05-09 11:40:34 | INFO     | logger:82 - saving evaluation report
+2025-05-09 11:40:34 | INFO     | logger:82 - loading model
+2025-05-09 11:40:34 | SUCCESS  | logger:126 - Dataset loaded from E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\raw\test.csv.
+2025-05-09 11:40:34 | SUCCESS  | logger:126 - Feature engineering completed.
+2025-05-09 11:40:34 | SUCCESS  | logger:126 - Dataset saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\interim\train.csv.
+2025-05-09 11:40:34 | INFO     | logger:82 - creating submission file
+2025-05-09 11:41:10 | INFO     | logger:82 - Training started
+2025-05-09 11:41:10 | SUCCESS  | logger:126 - Dataset loaded from E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\raw\train.csv.
+2025-05-09 11:41:10 | SUCCESS  | logger:126 - Feature engineering completed.
+2025-05-09 11:41:10 | SUCCESS  | logger:126 - Dataset saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\interim\train.csv.
+2025-05-09 11:41:11 | SUCCESS  | logger:126 - Dataset split into training and testing sets.
+2025-05-09 11:41:11 | SUCCESS  | logger:126 - Dataset saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\interim\train.csv.
+2025-05-09 11:41:11 | SUCCESS  | logger:126 - Dataset saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\interim\val.csv.
+2025-05-09 11:41:11 | INFO     | logger:82 - Columns to drop: ['PassengerId', 'Name', 'Ticket', 'Cabin']
+2025-05-09 11:41:11 | INFO     | logger:82 - X_train shape: (713, 11)
+2025-05-09 11:41:11 | INFO     | logger:82 - X_val shape: (178, 11)
+2025-05-09 11:41:11 | INFO     | logger:82 - y_train shape: (713,)
+2025-05-09 11:41:11 | INFO     | logger:82 - y_val shape: (178,)
+2025-05-09 11:41:11 | SUCCESS  | logger:126 - Preprocessing train completed.
+2025-05-09 11:41:12 | SUCCESS  | logger:126 - Model trained.
+2025-05-09 11:41:13 | SUCCESS  | logger:126 - Processed data saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\processed\train.csv.
+2025-05-09 11:41:14 | SUCCESS  | logger:126 - Processed data saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\processed\val.csv.
+2025-05-09 11:41:17 | SUCCESS  | logger:126 - Model saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\models\random_forest\random_forest.pkl.
+2025-05-09 11:41:18 | INFO     | logger:82 - Training finished
+2025-05-09 11:41:22 | INFO     | logger:82 - loading model
+2025-05-09 11:41:23 | SUCCESS  | logger:126 - Dataset loaded from E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\interim\val.csv.
+2025-05-09 11:41:27 | INFO     | logger:82 - creating evaluation report
+2025-05-09 11:41:30 | INFO     | logger:82 - saving evaluation report
+2025-05-09 11:41:32 | INFO     | logger:82 - loading model
+2025-05-09 11:41:32 | SUCCESS  | logger:126 - Dataset loaded from E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\raw\test.csv.
+2025-05-09 11:41:32 | SUCCESS  | logger:126 - Feature engineering completed.
+2025-05-09 11:41:32 | SUCCESS  | logger:126 - Dataset saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\interim\train.csv.
+2025-05-09 11:41:32 | INFO     | logger:82 - creating submission file
+2025-05-09 11:41:54 | INFO     | logger:82 - Training started
+2025-05-09 11:41:54 | SUCCESS  | logger:126 - Dataset loaded from E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\raw\train.csv.
+2025-05-09 11:41:54 | SUCCESS  | logger:126 - Feature engineering completed.
+2025-05-09 11:41:54 | SUCCESS  | logger:126 - Dataset saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\interim\train.csv.
+2025-05-09 11:41:54 | SUCCESS  | logger:126 - Dataset split into training and testing sets.
+2025-05-09 11:41:54 | SUCCESS  | logger:126 - Dataset saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\interim\train.csv.
+2025-05-09 11:41:54 | SUCCESS  | logger:126 - Dataset saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\interim\val.csv.
+2025-05-09 11:41:54 | INFO     | logger:82 - Columns to drop: ['PassengerId', 'Name', 'Ticket', 'Cabin']
+2025-05-09 11:41:54 | INFO     | logger:82 - X_train shape: (713, 11)
+2025-05-09 11:41:54 | INFO     | logger:82 - X_val shape: (178, 11)
+2025-05-09 11:41:54 | INFO     | logger:82 - y_train shape: (713,)
+2025-05-09 11:41:54 | INFO     | logger:82 - y_val shape: (178,)
+2025-05-09 11:41:54 | SUCCESS  | logger:126 - Preprocessing train completed.
+2025-05-09 11:41:54 | SUCCESS  | logger:126 - Model trained.
+2025-05-09 11:41:54 | SUCCESS  | logger:126 - Processed data saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\processed\train.csv.
+2025-05-09 11:41:54 | SUCCESS  | logger:126 - Processed data saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\processed\val.csv.
+2025-05-09 11:41:54 | SUCCESS  | logger:126 - Model saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\models\random_forest\random_forest.pkl.
+2025-05-09 11:41:54 | INFO     | logger:82 - Training finished
+2025-05-09 11:41:54 | INFO     | logger:82 - loading model
+2025-05-09 11:41:54 | SUCCESS  | logger:126 - Dataset loaded from E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\interim\val.csv.
+2025-05-09 11:41:54 | INFO     | logger:82 - creating evaluation report
+2025-05-09 11:41:54 | INFO     | logger:82 - saving evaluation report
+2025-05-09 11:41:54 | INFO     | logger:82 - loading model
+2025-05-09 11:41:54 | SUCCESS  | logger:126 - Dataset loaded from E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\raw\test.csv.
+2025-05-09 11:41:54 | SUCCESS  | logger:126 - Feature engineering completed.
+2025-05-09 11:41:54 | SUCCESS  | logger:126 - Dataset saved to E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\interim\train.csv.
+2025-05-09 11:41:54 | INFO     | logger:82 - creating submission file

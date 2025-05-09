@@ -5,12 +5,12 @@ import pickle
 import pandas as pd
 from skore import EstimatorReport
 
-from config import INTERIM_DATA_DIR, MODELS_DIR, REPORTS_DIR
+from config import INTERIM_DATA_DIR, MODELS_DIR, RAW_DATA_DIR, REPORTS_DIR
 from dataset.dataset import Dataset
-from logger import ExecutorLogger
+from globals import logger
 
 
-def evaluate(X_test, y_test, model_name: str, logger: ExecutorLogger) -> None:
+def evaluate(model_name: str) -> None:
     logger.info("loading model")
     with open(os.path.join(MODELS_DIR, model_name, f"{model_name}.pkl"), "rb") as pkl:
         final_model = pickle.load(pkl)
@@ -21,7 +21,7 @@ def evaluate(X_test, y_test, model_name: str, logger: ExecutorLogger) -> None:
     )
     X_test = data.get().drop(columns=["Survived"])
     y_test = data.get()["Survived"]
-    
+
     final_report = EstimatorReport(final_model, X_test=X_test, y_test=y_test)
     logger.info("creating evaluation report")
     evaluation_report = {
@@ -40,12 +40,20 @@ def evaluate(X_test, y_test, model_name: str, logger: ExecutorLogger) -> None:
         json.dump(evaluation_report, js, indent=4)
 
 
-def generate_submission_file(model_name: str, X_test, test_id, logger: ExecutorLogger) -> None:
+def generate_submission_file(model_name: str) -> None:
     logger.info("loading model")
     with open(os.path.join(MODELS_DIR, model_name, f"{model_name}.pkl"), "rb") as pkl:
         final_model = pickle.load(pkl)
+
+    test_data = Dataset(
+        data=os.path.join(RAW_DATA_DIR, "test.csv"),
+    )
+
+    test_id = test_data.engineer_features()
+    test_id = test_data.get()["PassengerId"]
+
     logger.info("creating submission file")
     submission_df = pd.DataFrame()
     submission_df["PassengerId"] = test_id
-    submission_df["Survived"] = final_model.predict(X_test)
+    submission_df["Survived"] = final_model.predict(test_data.get())
     submission_df.to_csv(os.path.join(MODELS_DIR, model_name, "submission.csv"), index=False)

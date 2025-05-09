@@ -1,3 +1,5 @@
+import pickle
+
 import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.pipeline import Pipeline
@@ -5,7 +7,7 @@ from sklearn.pipeline import Pipeline
 from config import MODELS_DIR, PIPELINE_CONFIG
 from dataset.dataset import Dataset
 from globals import logger
-from modeling.evaluate import evaluate
+from modeling.evaluate import evaluate, generate_submission_file
 from modeling.training import train
 from preprocessing import preprocess_train
 from saver import Saver
@@ -46,21 +48,9 @@ def main() -> None:
     )
 
     logger.info("Training finished")
-    evaluate(X_val, y_val, model_name="random_forest", logger=logger)
+    evaluate(model_name="random_forest")
 
-    # test_df = Dataset(
-    #     filename="test.csv",
-    #     id_col="PassengerId",
-    #     target_col=None,
-    #     logger=logger,
-    #     encoder=train_ds.encoders,
-    #     scaler=train_ds.scalers,
-    # )
-    # test_df = test_df.engineer_features()
-
-    # test_df.preprocess_test()
-    # X_test, test_id = test_df.get_test()
-    # generate_submission_file("random_forest", X_test, test_id, logger=logger)
+    generate_submission_file(model_name="random_forest")
 
 
 if __name__ == "__main__":
