@@ -1,5 +1,7 @@
+from typing import Dict
+
 import numpy as np
-from omegaconf import DictConfig, OmegaConf
+from omegaconf import OmegaConf
 import pandas as pd
 from sklearn.base import BaseEstimator
 from sklearn.model_selection import RandomizedSearchCV
@@ -20,7 +22,7 @@ def train(model: BaseEstimator, X_train: np.ndarray, y_train: np.ndarray) -> Non
 
 def train_RandomizedSearchCV(
     model: BaseEstimator,
-    cfg: DictConfig,
+    cfg: Dict,
     X_train: pd.DataFrame,
     y_train: pd.Series,
 ) -> None:

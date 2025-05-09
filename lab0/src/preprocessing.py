@@ -3,7 +3,6 @@ from typing import Dict
 
 import dvc.api
 import numpy as np
-from omegaconf import DictConfig, OmegaConf
 
 from dataset.dataset import Dataset
 from dataset.preprocessor import Preprocessor
@@ -13,7 +12,7 @@ from saver import Saver
 
 def preprocess_train(
     train_df: Dataset,
-    cfg: DictConfig = None,
+    cfg: Dict = None,
 ) -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray, Preprocessor]:
     # ''' because OmegaConf must be converted to dict to avoid Transofmers erros in hydra but dvc.api doesn't use OmegaConf'''
     # pipeline_config: Dict = OmegaConf.to_container(cfg["pipeline_config"], resolve=True)
