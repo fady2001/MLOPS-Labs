@@ -63,7 +63,6 @@ class Dataset:
         """
         df_features = extract_features(self.df)
         logger.success("Feature engineering completed.")
-        Saver.save_dataset(df_features, filename="train.csv", dir=INTERIM_DATA_DIR)
         return df_features
 
     def get(self) -> pd.DataFrame:
