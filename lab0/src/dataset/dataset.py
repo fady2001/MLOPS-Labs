@@ -2,7 +2,7 @@ import os
 
 import pandas as pd
 
-from config import INTERIM_DATA_DIR, RAW_DATA_DIR
+from config import INTERIM_DATA_DIR
 from globals import logger
 
 
@@ -17,22 +17,21 @@ class Dataset:
         # Load data based on the type of `data`
         print(f"Data type: {type(data)}")
         if isinstance(data, str):
-            self.filename: str = data
-            self.df: pd.DataFrame = Dataset.load_dataset(filename=data)
+            self.filepath: str = data
+            self.df: pd.DataFrame = Dataset.load_dataset(filepath=data)
         elif isinstance(data, pd.DataFrame) or isinstance(data, pd.Series):
-            self.filename: str = "DataFrame"
+            self.filepath: str = "DataFrame"
             self.df: pd.DataFrame = data
         else:
             logger.error("Invalid data type. Expected a file path (str) or a DataFrame.")
             raise TypeError("Invalid data type. Expected a file path (str) or a DataFrame.")
 
     @staticmethod
-    def load_dataset(filename: str, dir: str = RAW_DATA_DIR) -> pd.DataFrame:
+    def load_dataset(filepath: str) -> pd.DataFrame:
         """
         Read a dataset from a CSV file.
         """
-        filepath = os.path.join(dir, filename)
-        if not os.path.exists(filepath) or not os.path.isfile(filepath):
+        if not os.path.isfile(filepath):
             logger.error(f"File {filepath} does not exist or is not a file.")
             raise FileNotFoundError(f"File {filepath} does not exist or is not a file.")
         df = pd.read_csv(filepath, sep=",")

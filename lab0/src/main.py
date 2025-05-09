@@ -1,7 +1,9 @@
+import os
+
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.pipeline import Pipeline
 
-from config import MODELS_DIR, PIPELINE_CONFIG
+from config import MODELS_DIR, PIPELINE_CONFIG, RAW_DATA_DIR
 from dataset.dataset import Dataset
 from globals import logger
 from modeling.evaluate import evaluate, generate_submission_file
@@ -12,7 +14,7 @@ from saver import Saver
 
 def main() -> None:
     logger.info("Training started")
-    train_ds = Dataset(data="train.csv", target_col="Survived")
+    train_ds = Dataset(data=os.path.join(RAW_DATA_DIR, "train.csv"), target_col="Survived")
     train_ds = train_ds.engineer_features()
 
     X_train, y_train, X_val, y_val, preprocessor = preprocess_train(
