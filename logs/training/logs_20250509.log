@@ -1,0 +1,11 @@
+2025-05-09 09:48:07 | INFO     | src.logger:84 - Training started
+2025-05-09 09:48:34 | INFO     | src.logger:84 - Training started
+2025-05-09 09:48:35 | SUCCESS  | src.logger:128 - Dataset loaded from E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\raw\train.csv.
+2025-05-09 09:49:14 | INFO     | src.logger:84 - Training started
+2025-05-09 09:49:15 | SUCCESS  | src.logger:128 - Dataset loaded from E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\raw\train.csv.
+2025-05-09 09:52:09 | INFO     | src.logger:84 - Training started
+2025-05-09 09:52:09 | SUCCESS  | src.logger:128 - Dataset loaded from E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\raw\train.csv.
+2025-05-09 09:52:21 | INFO     | src.logger:84 - Training started
+2025-05-09 09:52:23 | SUCCESS  | src.logger:128 - Dataset loaded from E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\raw\train.csv.
+2025-05-09 09:53:51 | INFO     | src.logger:84 - Training started
+2025-05-09 09:53:52 | SUCCESS  | src.logger:128 - Dataset loaded from E:\ITI Data science\MLOps\MLOPS-Labs\lab0\data\raw\train.csv.

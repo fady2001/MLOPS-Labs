@@ -21,6 +21,15 @@ MODELS_DIR = PROJ_ROOT / "models"
 REPORTS_DIR = PROJ_ROOT / "reports"
 FIGURES_DIR = REPORTS_DIR / "figures"
 
+PIPELINE_CONFIG = {
+    "drop": ["PassengerId", "Name", "Ticket", "Cabin"],
+    "imputation": {
+        "mean": ["Age"],
+    },
+    "scaling": {"standard": ["Age", "Fare"], "minmax": ["FamilySize", "TicketGroupSize"]},
+    "encoding": {"onehot": ["Sex"], "ordinal": ["Embarked", "Deck", "Title"]},
+}
+
 # If tqdm is installed, configure loguru with tqdm.write
 # https://github.com/Delgan/loguru/issues/135
 try:

@@ -5,15 +5,23 @@ import pickle
 import pandas as pd
 from skore import EstimatorReport
 
-from src.config import MODELS_DIR, REPORTS_DIR
-from src.logger import ExecutorLogger
+from config import INTERIM_DATA_DIR, MODELS_DIR, REPORTS_DIR
+from dataset.dataset import Dataset
+from logger import ExecutorLogger
 
 
-def evaluate(X_test, y_test, model_name: str, logger:ExecutorLogger) -> None:
+def evaluate(X_test, y_test, model_name: str, logger: ExecutorLogger) -> None:
     logger.info("loading model")
     with open(os.path.join(MODELS_DIR, model_name, f"{model_name}.pkl"), "rb") as pkl:
         final_model = pickle.load(pkl)
- 
+
+    data = Dataset(
+        data=os.path.join(INTERIM_DATA_DIR, "val.csv"),
+        target_col="Survived",
+    )
+    X_test = data.get().drop(columns=["Survived"])
+    y_test = data.get()["Survived"]
+    
     final_report = EstimatorReport(final_model, X_test=X_test, y_test=y_test)
     logger.info("creating evaluation report")
     evaluation_report = {
@@ -28,14 +36,11 @@ def evaluate(X_test, y_test, model_name: str, logger:ExecutorLogger) -> None:
     logger.info("saving evaluation report")
     if not os.path.exists(os.path.join(REPORTS_DIR, model_name)):
         os.makedirs(os.path.join(REPORTS_DIR, model_name))
-    with open(
-        os.path.join(REPORTS_DIR, model_name, "evaluation_report.json"), "w"
-    ) as js:
+    with open(os.path.join(REPORTS_DIR, model_name, "evaluation_report.json"), "w") as js:
         json.dump(evaluation_report, js, indent=4)
-        
-def generate_submission_file(
-    model_name: str, X_test,test_id, logger:ExecutorLogger
-) -> None:
+
+
+def generate_submission_file(model_name: str, X_test, test_id, logger: ExecutorLogger) -> None:
     logger.info("loading model")
     with open(os.path.join(MODELS_DIR, model_name, f"{model_name}.pkl"), "rb") as pkl:
         final_model = pickle.load(pkl)

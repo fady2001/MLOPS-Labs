@@ -33,9 +33,7 @@ class ExecutorLogger:
 
         if logs_path:
             self.logger.add(
-                Path("logs")
-                / Path(logs_path)
-                / f"logs_{datetime.now().strftime('%Y%m%d')}.log",
+                Path("logs") / Path(logs_path) / f"logs_{datetime.now().strftime('%Y%m%d')}.log",
                 level=level,
                 format=self._get_file_format(),
                 rotation="10 MB",
@@ -115,7 +113,7 @@ class ExecutorLogger:
             **kwargs: Additional keyword arguments for logging.
         """
         self.logger.critical(message, *args, **kwargs)
-        
+
     def success(self, message: str, *args, **kwargs):
         """
         Logs a message with level SUCCESS.
