@@ -8,7 +8,7 @@ from sklearn.pipeline import Pipeline
 from dataset.dataset import Dataset
 from globals import logger
 from modeling.evaluate import evaluate, generate_submission_file
-from modeling.training import train
+from modeling.training import train_RandomizedSearchCV
 from preprocessing import preprocess_train
 from saver import Saver
 
@@ -28,10 +28,11 @@ def main(cfg: DictConfig) -> None:
         train_ds,
         cfg=cfg,
     )
+    model = RandomForestClassifier(
+        **OmegaConf.to_container(cfg["hyperparameters"]["random_forest"], resolve=True),
+    )
 
-    model = RandomForestClassifier(n_estimators=100, max_depth=5, random_state=1)
-
-    train(model, X_train, y_train)
+    model = train_RandomizedSearchCV(model, cfg, X_train, y_train)
 
     Saver.save_processed_data(
         X_train,

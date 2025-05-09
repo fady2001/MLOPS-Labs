@@ -2,16 +2,16 @@
     "model_name": "random_forest",
     "estimator_name": "RandomForestClassifier",
     "fitting_time": null,
-    "accuracy": 0.8370786516853933,
+    "accuracy": 0.8426966292134831,
     "precision": {
-        "0": 0.8620689655172413,
-        "1": 0.7903225806451613
+        "0": 0.8632478632478633,
+        "1": 0.8032786885245902
     },
     "recall": {
-        "0": 0.8849557522123894,
+        "0": 0.8938053097345132,
         "1": 0.7538461538461538
     },
     "prediction_time": {
-        "predict_time_test": 0.019208299927413464
+        "predict_time_test": 0.014396800077520311
     }
 }
