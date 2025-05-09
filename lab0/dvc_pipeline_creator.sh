@@ -29,3 +29,17 @@ dvc stage add -n train \
     --force \
     uv run src/training.py
 
+dvc stage add -n evaluate \
+    -d data/processed/val.csv \
+    -d src/evaluate.py \
+    -d models/random_forest/random_forest.pkl \
+    -o reports/random_forest/evaluation_report.json \
+    -p paths \
+    -p dataset \
+    -p names \
+    -p hyperparameters \
+    -p tuning \
+    -p pipeline_config \
+    --force \
+    uv run src/evaluate.py
+

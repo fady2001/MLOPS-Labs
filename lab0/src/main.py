@@ -7,7 +7,7 @@ from sklearn.pipeline import Pipeline
 
 from dataset.dataset import Dataset
 from globals import logger
-from modeling.evaluate import evaluate, generate_submission_file
+from lab0.src.evaluate import evaluate, generate_submission_file
 from lab0.src.training import train_RandomizedSearchCV
 from preprocessing import preprocess_train
 from saver import Saver

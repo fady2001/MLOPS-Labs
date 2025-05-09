@@ -3,6 +3,7 @@ import os
 import pickle
 from typing import Dict
 
+import dvc.api
 import pandas as pd
 from skore import EstimatorReport
 
@@ -87,3 +88,7 @@ def generate_submission_file(cfg: Dict) -> None:
         ),
         index=False,
     )
+
+
+if __name__ == "__main__":
+    evaluate(cfg=dvc.api.params_show())
