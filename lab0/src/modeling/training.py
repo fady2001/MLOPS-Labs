@@ -41,21 +41,3 @@ def RandomizedSearchCV(
     logger.info(f"Best score: {search.best_score_}")
 
     logger.success("Randomized Search CV completed.")
-
-
-def save_model(model: None, model_name: str) -> None:
-    """
-    Save the model.
-    """
-    if model is None:
-        logger.error("Model is None.")
-        raise ValueError("Model is None.")
-
-    model_path = os.path.join(MODELS_DIR, model_name)
-    if not os.path.exists(model_path):
-        os.makedirs(model_path)
-
-    with open(os.path.join(model_path, f"{model_name}.pkl"), "wb") as pkl:
-        pickle.dump(model, pkl)
-
-    logger.success(f"Model saved to {os.path.join(MODELS_DIR, model_name)}.")
