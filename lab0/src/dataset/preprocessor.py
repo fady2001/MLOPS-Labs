@@ -1,6 +1,5 @@
 from typing import Dict, List, Tuple
 
-from category_encoders import TargetEncoder
 import numpy as np
 import pandas as pd
 from sklearn.base import BaseEstimator
@@ -12,9 +11,8 @@ from sklearn.preprocessing import (
     OrdinalEncoder,
     RobustScaler,
     StandardScaler,
+    TargetEncoder,
 )
-
-from globals import logger
 
 
 class Preprocessor:
@@ -27,12 +25,6 @@ class Preprocessor:
     def fit(self, X: pd.DataFrame) -> "Preprocessor":
         transformers = []
 
-        # if self.pipeline_config.get("drop"):
-        #     columns_to_drop = self.pipeline_config["drop"]
-        #     transformers.append(('drop', 'drop', columns_to_drop))
-
-        # X.drop(columns=self.pipeline_config.get("drop", []), inplace=True, errors="ignore")
-        logger.info(f"Columns to drop: {self.pipeline_config.get('drop', [])}")
         transformers.append(("drop_columns", "drop", self.pipeline_config.get("drop", [])))
         transformers.extend(self.__create_encode_steps())
         transformers.extend(self.__create_scaling_steps())

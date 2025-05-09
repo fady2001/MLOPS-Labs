@@ -1,2 +1,2 @@
 defaults:
-  - pipeline: titanic.yaml
+  - pipeline: tatanic1.yaml
