@@ -2,7 +2,6 @@ import os
 
 import pandas as pd
 
-from config import INTERIM_DATA_DIR
 from globals import logger
 
 
@@ -56,7 +55,6 @@ class Dataset:
 
     def engineer_features(self) -> "Dataset":
         from dataset.features import extract_features
-        from saver import Saver
 
         """
         Perform feature engineering on the dataset.
