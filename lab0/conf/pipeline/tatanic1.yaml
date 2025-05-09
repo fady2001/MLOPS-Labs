@@ -1,10 +1,8 @@
-working_dir: ${hydra:runtime.cwd}
-
 paths:
-  data_parent_dir: ${pipeline.working_dir}/data
-  models_parent_dir: ${pipeline.working_dir}/models
-  reports_parent_dir: ${pipeline.working_dir}/reports
-  figures_parent_dir: ${pipeline.working_dir}/figures
+  data_parent_dir: data
+  models_parent_dir: models
+  reports_parent_dir: reports
+  figures_parent_dir: figures
   data:
     raw_data: ${pipeline.paths.data_parent_dir}/raw
     interim_data: ${pipeline.paths.data_parent_dir}/interim
