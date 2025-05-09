@@ -1,0 +1,19 @@
+stages:
+  preprocess:
+    cmd: uv run src/preprocessing.py
+    deps:
+    - data/raw/train.csv
+    - src/preprocessing.py
+    outs:
+    - data/interim/train.csv
+    - data/interim/val.csv
+    - data/processed/train.csv
+    - data/processed/val.csv
+    - models/random_forest/columns_transformer.pkl
+    params:
+    - dataset
+    - hyperparameters
+    - names
+    - paths
+    - pipeline_config
+    - tuning
