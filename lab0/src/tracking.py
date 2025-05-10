@@ -55,7 +55,7 @@ def log_and_register_model_with_mlflow(final_model, test_df, cfg, params):
         mlflow.log_metrics(reformat_metrics(metrics))
 
         # Register the model
-        model_uri = f"runs:/{run_id}/{cfg['paths']['models_parent_dir']}"
+        model_uri = f"runs:/{run_id}/{cfg["paths"]["models_parent_dir"]}"
         model_details = mlflow.register_model(model_uri=model_uri, name=cfg["names"]["model_name"])
         logger.error(model_details)
         logger.info("Model registered successfully!!")

@@ -84,4 +84,4 @@ pipeline_config:
 
 flags:
   use_mlflow: true
-  local: true
+  local: false
