@@ -2,7 +2,6 @@ import os
 import pickle
 
 import litserve as ls
-import numpy as np
 import pandas as pd
 from pydantic import ValidationError
 
@@ -12,9 +11,9 @@ from src.deployment.requests import InferenceRequest
 class InferenceAPI(ls.LitAPI):
     def __init__(self, cfg):
         self.cfg = cfg
-        self.max_batch_size = 1  # Set the maximum batch size (adjust as needed)
-        self.enable_async = False  # Set to True if you want to enable async processing
-        self.batch_timeout = 0.1  # Set the batch timeout (in seconds)
+        self.max_batch_size = 1
+        self.enable_async = False
+        self.batch_timeout = 0.1
         print(cfg)
 
     def setup(self, device="cpu"):
