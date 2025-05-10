@@ -18,7 +18,7 @@ names:
   train_data: "train.csv"
   test_data: "test.csv"
   val_data: "val.csv"
-  model_name: "random_forest"
+  model_name: "random_forest1"
   submission_name: "submission.csv"
   columns_transformer: "columns_transformer"
 
@@ -37,7 +37,7 @@ hyperparameters:
     random_state: 42
 
 tuning:
-  n_iter: 10
+  n_iter: 2
   cv: 5
   random_forest:
     n_estimators:

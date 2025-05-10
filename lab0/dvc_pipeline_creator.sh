@@ -5,7 +5,7 @@ dvc stage add -n preprocess \
     -o data/interim/val.csv \
     -o data/processed/train.csv \
     -o data/processed/val.csv \
-    -o models/random_forest/columns_transformer.pkl \
+    -o models/random_forest1/columns_transformer.pkl \
     -p paths \
     -p dataset \
     -p names \
@@ -18,8 +18,8 @@ dvc stage add -n preprocess \
 dvc stage add -n train \
     -d data/processed/train.csv \
     -d src/training.py \
-    -d models/random_forest/columns_transformer.pkl \
-    -o models/random_forest/random_forest.pkl \
+    -d models/random_forest1/columns_transformer.pkl \
+    -o models/random_forest1/random_forest1.pkl \
     -p paths \
     -p dataset \
     -p names \
@@ -33,8 +33,8 @@ dvc stage add -n train \
 dvc stage add -n evaluate \
     -d data/processed/val.csv \
     -d src/evaluate.py \
-    -d models/random_forest/random_forest.pkl \
-    -o reports/random_forest/evaluation_report.json \
+    -d models/random_forest1/random_forest1.pkl \
+    -o reports/random_forest1/evaluation_report.json \
     -p paths \
     -p dataset \
     -p names \

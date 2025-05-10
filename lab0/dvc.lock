@@ -28,7 +28,7 @@ stages:
           train_data: train.csv
           test_data: test.csv
           val_data: val.csv
-          model_name: random_forest
+          model_name: random_forest1
           submission_name: submission.csv
           columns_transformer: columns_transformer
         paths:
@@ -65,7 +65,7 @@ stages:
             - Deck
             - Title
         tuning:
-          n_iter: 10
+          n_iter: 2
           cv: 5
           random_forest:
             n_estimators:
@@ -102,7 +102,7 @@ stages:
       hash: md5
       md5: c89b53ce421cf3b47e8d3f1015f695d2
       size: 15557
-    - path: models/random_forest/columns_transformer.pkl
+    - path: models/random_forest1/columns_transformer.pkl
       hash: md5
       md5: 716c7331b2a26f18901f584c816f91f8
       size: 3773
@@ -113,7 +113,7 @@ stages:
       hash: md5
       md5: 11710e9ba19448f6f209e0261db47077
       size: 62386
-    - path: models/random_forest/columns_transformer.pkl
+    - path: models/random_forest1/columns_transformer.pkl
       hash: md5
       md5: 716c7331b2a26f18901f584c816f91f8
       size: 3773
@@ -140,7 +140,7 @@ stages:
           train_data: train.csv
           test_data: test.csv
           val_data: val.csv
-          model_name: random_forest
+          model_name: random_forest1
           submission_name: submission.csv
           columns_transformer: columns_transformer
         paths:
@@ -177,7 +177,7 @@ stages:
             - Deck
             - Title
         tuning:
-          n_iter: 10
+          n_iter: 2
           cv: 5
           random_forest:
             n_estimators:
@@ -198,10 +198,10 @@ stages:
             - sqrt
             - log2
     outs:
-    - path: models/random_forest/random_forest.pkl
+    - path: models/random_forest1/random_forest1.pkl
       hash: md5
-      md5: 47a8a20e7ce0f3b9ca8130b10d2f5329
-      size: 584397
+      md5: 2b6ea423663184732404513fc4dd8759
+      size: 808043
   evaluate:
     cmd: uv run src/evaluate.py
     deps:

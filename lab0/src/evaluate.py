@@ -4,24 +4,27 @@ import pickle
 from typing import Dict
 
 import dvc.api
+import mlflow
 import pandas as pd
 from skore import EstimatorReport
 
 from dataset.dataset import Dataset
 from globals import logger
+from utils import get_mlflow_client
 
 
 def evaluate(cfg: Dict) -> None:
     logger.info("loading model")
-    with open(
-        os.path.join(
-            cfg["paths"]["models_parent_dir"],
-            cfg["names"]["model_name"],
-            f"{cfg['names']['model_name']}.pkl",
-        ),
-        "rb",
-    ) as pkl:
-        final_model = pickle.load(pkl)
+
+    # client = get_mlflow_client()
+    # print(
+    #     cfg["names"]["model_name"],
+    #     "###################################################################",
+    # )
+    # version = client.get_latest_versions(name=cfg["names"]["model_name"])[0].version
+    final_model = mlflow.sklearn.load_model(
+        model_uri=f"models:/{cfg['names']['model_name']}/latest"
+    )
 
     data = Dataset(
         data=os.path.join(cfg["paths"]["data"]["interim_data"], cfg["names"]["val_data"]),

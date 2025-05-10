@@ -9,7 +9,7 @@ stages:
     - data/interim/val.csv
     - data/processed/train.csv
     - data/processed/val.csv
-    - models/random_forest/columns_transformer.pkl
+    - models/random_forest1/columns_transformer.pkl
     params:
     - dataset
     - hyperparameters
@@ -21,7 +21,7 @@ stages:
     cmd: uv run src/training.py
     deps:
     - data/processed/train.csv
-    - models/random_forest/columns_transformer.pkl
+    - models/random_forest1/columns_transformer.pkl
     - src/training.py
     params:
     - dataset
@@ -32,12 +32,12 @@ stages:
     - pipeline_config
     - tuning
     outs:
-    - models/random_forest/random_forest.pkl
+    - models/random_forest1/random_forest1.pkl
   evaluate:
     cmd: uv run src/evaluate.py
     deps:
     - data/processed/val.csv
-    - models/random_forest/random_forest.pkl
+    - models/random_forest1/random_forest1.pkl
     - src/evaluate.py
     params:
     - dataset
@@ -47,4 +47,4 @@ stages:
     - pipeline_config
     - tuning
     outs:
-    - reports/random_forest/evaluation_report.json
+    - reports/random_forest1/evaluation_report.json

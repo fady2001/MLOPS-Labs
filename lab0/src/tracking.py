@@ -36,7 +36,7 @@ def log_and_register_model_with_mlflow(final_model, test_df, cfg, params):
 
         # Log Model
         mlflow.sklearn.log_model(
-            final_model,
+            sk_model=final_model,
             artifact_path=cfg["paths"]["models_parent_dir"],
             registered_model_name=cfg["names"]["model_name"],
             signature=signature,
@@ -52,15 +52,12 @@ def log_and_register_model_with_mlflow(final_model, test_df, cfg, params):
             "recall": final_report.metrics.recall(),
             "roc_auc": final_report.metrics.roc_auc(),
         }
-
-        print("Metrics to log:", metrics)
-        metrics = reformat_metrics(metrics)
-        mlflow.log_metrics(metrics)
+        mlflow.log_metrics(reformat_metrics(metrics))
 
         # Register the model
         model_uri = f"runs:/{run_id}/{cfg['paths']['models_parent_dir']}"
         model_details = mlflow.register_model(model_uri=model_uri, name=cfg["names"]["model_name"])
-
+        logger.error(model_details)
         logger.info("Model registered successfully!!")
 
         return model_details, run_id
@@ -77,10 +74,29 @@ def reformat_metrics(metrics):
     return reformatted_metrics
 
 
-def move_model_to_prod(client: mlflow.client.MlflowClient, model_details) -> None:
+def move_model_to_prod(client: mlflow.client.MlflowClient, model_details: mlflow) -> None:
+    model_name = "random_forest1"
+    versions = client.get_latest_versions(model_name, stages=["Production"])
+
+    if versions:
+        print(f"{model_name} has version(s) in Production:")
+        for v in versions:
+            print(f"  - Version {v.version}")
+    else:
+        print(f"{model_name} has no versions in Production.")
+
+    print(model_details, "********************************************")
     client.transition_model_version_stage(
         name=model_details.name,
         version=model_details.version,
         stage="production",
     )
+    # check if the model is in production
+    # model_version = client.get_model_version(
+    #     name=model_details.name, version=model_details.version
+    # )
+    # if model_version.current_stage != "production":
+    #     raise ValueError("Model is not in production stage.")
+    # else:
+    #     logger.info("Model is in production stage.")
     logger.info("Model transitioned to prod stage")
