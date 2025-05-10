@@ -42,6 +42,7 @@ def get_mlflow_client() -> mlflow.client.MlflowClient:
 
 
 def setup_dagshub(cfg) -> None:
+    load_dotenv()
     dagshub.auth.add_app_token(token=os.getenv("DAGSHUB_TOKEN"))
     dagshub.init(
         repo_owner=os.getenv("DAGSHUB_USERNAME"),
@@ -51,7 +52,6 @@ def setup_dagshub(cfg) -> None:
 
 
 def authenticate(cfg) -> mlflow.client.MlflowClient:
-    load_dotenv()
     """
     Authenticate with MLflow and DagsHub.
     """

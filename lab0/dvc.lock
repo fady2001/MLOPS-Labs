@@ -65,8 +65,8 @@ stages:
             - Deck
             - Title
         tuning:
-          n_iter: 2
-          cv: 5
+          n_iter: 1
+          cv: 2
           random_forest:
             n_estimators:
             - 50
@@ -177,8 +177,8 @@ stages:
             - Deck
             - Title
         tuning:
-          n_iter: 2
-          cv: 5
+          n_iter: 1
+          cv: 2
           random_forest:
             n_estimators:
             - 50
@@ -200,8 +200,8 @@ stages:
     outs:
     - path: models/random_forest1/random_forest1.pkl
       hash: md5
-      md5: 2b6ea423663184732404513fc4dd8759
-      size: 808043
+      md5: e9e8d04925a2e1b89417ad66818ae19f
+      size: 773634
   evaluate:
     cmd: uv run src/evaluate.py
     deps:
@@ -209,14 +209,14 @@ stages:
       hash: md5
       md5: c89b53ce421cf3b47e8d3f1015f695d2
       size: 15557
-    - path: models/random_forest/random_forest.pkl
+    - path: models/random_forest1/random_forest1.pkl
       hash: md5
-      md5: 47a8a20e7ce0f3b9ca8130b10d2f5329
-      size: 584397
+      md5: e9e8d04925a2e1b89417ad66818ae19f
+      size: 773634
     - path: src/evaluate.py
       hash: md5
-      md5: 32724ff729e961f0ee1e097d2f0ae81e
-      size: 2998
+      md5: fc23fb17d7ecfbc0c89f85fa52cf3230
+      size: 3152
     params:
       params.yaml:
         dataset:
@@ -234,7 +234,7 @@ stages:
           train_data: train.csv
           test_data: test.csv
           val_data: val.csv
-          model_name: random_forest
+          model_name: random_forest1
           submission_name: submission.csv
           columns_transformer: columns_transformer
         paths:
@@ -271,8 +271,8 @@ stages:
             - Deck
             - Title
         tuning:
-          n_iter: 10
-          cv: 5
+          n_iter: 1
+          cv: 2
           random_forest:
             n_estimators:
             - 50
@@ -292,7 +292,7 @@ stages:
             - sqrt
             - log2
     outs:
-    - path: reports/random_forest/evaluation_report.json
+    - path: reports/random_forest1/evaluation_report.json
       hash: md5
-      md5: ca6f4f943a8321ae088f2cbf9b0a8757
-      size: 423
+      md5: 32e5f867b9cc4a02ebec2119c0e4a5e1
+      size: 425

@@ -57,6 +57,7 @@ def log_and_register_model_with_mlflow(final_model, test_df, cfg, params):
         # Register the model
         model_uri = f"runs:/{run_id}/{cfg['paths']['models_parent_dir']}"
         model_details = mlflow.register_model(model_uri=model_uri, name=cfg["names"]["model_name"])
+
         logger.error(model_details)
         logger.info("Model registered successfully!!")
 
@@ -74,29 +75,17 @@ def reformat_metrics(metrics):
     return reformatted_metrics
 
 
-def move_model_to_prod(client: mlflow.client.MlflowClient, model_details: mlflow) -> None:
-    model_name = "random_forest1"
-    versions = client.get_latest_versions(model_name, stages=["Production"])
-
-    if versions:
-        print(f"{model_name} has version(s) in Production:")
-        for v in versions:
-            print(f"  - Version {v.version}")
-    else:
-        print(f"{model_name} has no versions in Production.")
-
-    print(model_details, "********************************************")
+def move_model_to_prod(client: mlflow.client.MlflowClient, model_details) -> None:
     client.transition_model_version_stage(
         name=model_details.name,
         version=model_details.version,
         stage="production",
     )
-    # check if the model is in production
-    # model_version = client.get_model_version(
-    #     name=model_details.name, version=model_details.version
-    # )
-    # if model_version.current_stage != "production":
-    #     raise ValueError("Model is not in production stage.")
-    # else:
-    #     logger.info("Model is in production stage.")
+    # add tag that the model is in production
+    client.set_model_version_tag(
+        name=model_details.name,
+        version=model_details.version,
+        key="production",
+        value="true",
+    )
     logger.info("Model transitioned to prod stage")

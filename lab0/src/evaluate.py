@@ -10,21 +10,16 @@ from skore import EstimatorReport
 
 from dataset.dataset import Dataset
 from globals import logger
-from utils import get_mlflow_client
+from utils import get_mlflow_client, setup_dagshub
 
 
 def evaluate(cfg: Dict) -> None:
     logger.info("loading model")
-
-    # client = get_mlflow_client()
-    # print(
-    #     cfg["names"]["model_name"],
-    #     "###################################################################",
-    # )
-    # version = client.get_latest_versions(name=cfg["names"]["model_name"])[0].version
-    final_model = mlflow.sklearn.load_model(
-        model_uri=f"models:/{cfg['names']['model_name']}/latest"
-    )
+    client = get_mlflow_client()
+    logger.error(client.tracking_uri)
+    version = client.get_latest_versions(name=cfg['names']["model_name"])[0].version
+    logger.error(f"version: {version}")
+    final_model = mlflow.sklearn.load_model(model_uri=f"models:/{cfg['names']['model_name']}/{version}")
 
     data = Dataset(
         data=os.path.join(cfg["paths"]["data"]["interim_data"], cfg["names"]["val_data"]),
@@ -94,4 +89,6 @@ def generate_submission_file(cfg: Dict) -> None:
 
 
 if __name__ == "__main__":
-    evaluate(cfg=dvc.api.params_show())
+    cfg=dvc.api.params_show()
+    setup_dagshub(cfg=cfg)
+    evaluate(cfg=cfg)
