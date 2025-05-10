@@ -3,6 +3,7 @@ import pickle
 
 import litserve as ls
 import numpy as np
+import pandas as pd
 
 from src.deployment.requests import InferenceRequest
 
@@ -28,11 +29,12 @@ class InferenceAPI(ls.LitAPI):
 
     def decode_request(self, request):
         try:
-            InferenceRequest(**request["input"])
-            data = [val for val in request["input"].values()]
-            x = np.asarray(data)
-            x = np.expand_dims(x, 0)
-            return x
+            # InferenceRequest(**request["dataframe_split"])
+            columns = request["dataframe_split"]["columns"]
+            data = request["dataframe_split"]["data"]
+
+            df = pd.DataFrame(data, columns=columns)
+            return df
         except Exception:
             return None
 
@@ -44,11 +46,13 @@ class InferenceAPI(ls.LitAPI):
             return None
 
     def encode_response(self, output):
+        print(output, 9 * "*")
         if output is None:
             message = "Error Occurred"
         else:
             message = "Response Produced Successfully"
-        return {
+        response = {
             "message": message,
-            "prediction": [self._encoder["decoder"][val] for val in output],
+            "data": output.tolist(),
         }
+        return response
