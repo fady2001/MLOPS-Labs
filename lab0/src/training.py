@@ -86,6 +86,10 @@ if __name__ == "__main__":
         dir=os.path.join(cfg["paths"]["models_parent_dir"], cfg["names"]["model_name"]),
     )
 
+    if cfg["flags"]["local"]:
+        logger.info("MLflow tracking is disabled.")
+        exit(0)
+
     client: mlflow.client.MlflowClient = authenticate(cfg)
 
     model_details, run_id = log_and_register_model_with_mlflow(
