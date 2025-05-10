@@ -4,6 +4,7 @@ import pickle
 import litserve as ls
 import numpy as np
 import pandas as pd
+from pydantic import ValidationError
 
 from src.deployment.requests import InferenceRequest
 
@@ -29,11 +30,24 @@ class InferenceAPI(ls.LitAPI):
 
     def decode_request(self, request):
         try:
-            # InferenceRequest(**request["dataframe_split"])
             columns = request["dataframe_split"]["columns"]
-            data = request["dataframe_split"]["data"]
+            rows = request["dataframe_split"]["data"]
+            inference_requests = []
 
-            df = pd.DataFrame(data, columns=columns)
+            for row in rows:
+                row_dict = dict(zip(columns, row))
+                try:
+                    # Create an InferenceRequest instance and append it to the list
+                    inference_request = InferenceRequest(**row_dict)
+                    inference_requests.append(inference_request)
+                except ValidationError as e:
+                    print(f"Validation error for row {row}: {e}")
+                    return {
+                        "message": "Validation error",
+                        "data": str(e),
+                    }
+
+            df = pd.DataFrame(rows, columns=columns)
             return df
         except Exception:
             return None

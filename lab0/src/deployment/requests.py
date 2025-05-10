@@ -23,7 +23,7 @@ class InferenceRequest(BaseModel):
     FarePerPerson: float
     AgeBin: Optional[int]  # AgeBin can be missing
     FareBin: Optional[int]  # FareBin can be missing
-    Pclass_AgeBin: Optional[float]  # Optional, might need calculation
+    Pclass_AgeBin: Optional[int]  # Optional, might need calculation
     Sex_Pclass: str
     CabinMissing: int
     AgeMissing: int
