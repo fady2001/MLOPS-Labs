@@ -1,0 +1,39 @@
+2025-05-17 22:45:22 | INFO     | logger:82 - Retrieving weather data from API...
+2025-05-17 22:45:24 | INFO     | logger:82 - Data retrieved successfully (status code: 200)
+2025-05-17 22:47:17 | INFO     | logger:82 - Transforming API data into structured DataFrame...
+2025-05-17 22:47:27 | INFO     | logger:82 - Transformation complete. Data is ready for loading.
+2025-05-17 22:47:30 | INFO     | logger:82 - Establishing connection to MotherDuck...
+2025-05-17 22:55:33 | INFO     | logger:82 - Transforming API data into structured DataFrame...
+2025-05-17 22:55:33 | INFO     | logger:82 - Transformation complete. Data is ready for loading.
+2025-05-17 22:55:34 | INFO     | logger:82 - Establishing connection to MotherDuck...
+2025-05-17 22:55:39 | INFO     | logger:82 - Connected to MotherDuck successfully.
+2025-05-17 22:55:43 | INFO     | logger:82 - Checking for existing data for date: 2023-10-01
+2025-05-17 23:17:14 | INFO     | logger:82 - Transforming API data into structured DataFrame...
+2025-05-17 23:17:14 | INFO     | logger:82 - Transformation complete. Data is ready for loading.
+2025-05-17 23:17:16 | INFO     | logger:82 - Establishing connection to MotherDuck...
+2025-05-17 23:17:48 | INFO     | logger:82 - Connected to MotherDuck successfully.
+2025-05-17 23:17:55 | INFO     | logger:82 - Checking for existing data for date: 2023-10-01
+2025-05-17 23:20:53 | INFO     | logger:82 - Transforming API data into structured DataFrame...
+2025-05-17 23:20:53 | INFO     | logger:82 - Transformation complete. Data is ready for loading.
+2025-05-17 23:20:54 | INFO     | logger:82 - Establishing connection to MotherDuck...
+2025-05-17 23:20:57 | INFO     | logger:82 - Connected to MotherDuck successfully.
+2025-05-17 23:21:59 | INFO     | logger:82 - Checking for existing data for date: 2023-10-01
+2025-05-17 23:23:12 | INFO     | logger:82 - Checking for existing data for date: 2023-10-01
+2025-05-17 23:24:39 | INFO     | logger:82 - Retrieving weather data from API...
+2025-05-17 23:24:40 | INFO     | logger:82 - Data retrieved successfully (status code: 200)
+2025-05-17 23:24:40 | INFO     | logger:82 - Data is complete and valid.
+2025-05-17 23:24:40 | INFO     | logger:82 - Data is complete and valid.
+2025-05-17 23:24:40 | INFO     | logger:82 - Data is complete and valid.
+2025-05-17 23:24:40 | INFO     | logger:82 - Data is complete and valid.
+2025-05-17 23:24:40 | INFO     | logger:82 - Data is complete and valid.
+2025-05-17 23:24:40 | INFO     | logger:82 - Data is complete and valid.
+2025-05-17 23:24:40 | INFO     | logger:82 - Data is complete and valid.
+2025-05-17 23:24:41 | INFO     | logger:82 - Transforming API data into structured DataFrame...
+2025-05-17 23:24:41 | INFO     | logger:82 - Transformation complete. Data is ready for loading.
+2025-05-17 23:24:42 | INFO     | logger:82 - Establishing connection to MotherDuck...
+2025-05-17 23:25:16 | INFO     | logger:82 - Connection to MotherDuck established successfully.
+2025-05-17 23:25:16 | INFO     | logger:82 - Connected to MotherDuck successfully.
+2025-05-17 23:25:17 | INFO     | logger:82 - Checking for existing data for date: 2023-10-01
+2025-05-17 23:26:17 | INFO     | logger:82 - Checking for existing data for date: 2023-10-01
+2025-05-17 23:27:17 | INFO     | logger:82 - Checking for existing data for date: 2023-10-01
+2025-05-17 23:28:17 | INFO     | logger:82 - Checking for existing data for date: 2023-10-01

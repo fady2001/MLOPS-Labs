@@ -19,6 +19,7 @@ dependencies = [
     "duckdb>=1.2.2",
     "loguru",
     "mkdocs",
+    "pandas>=2.2.3",
     "pip",
     "prefect>=3.4.1",
     "pydantic>=2.11.4",
