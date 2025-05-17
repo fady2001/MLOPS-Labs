@@ -16,9 +16,12 @@ classifiers = [
     
 ]
 dependencies = [
+    "duckdb>=1.2.2",
     "loguru",
     "mkdocs",
     "pip",
+    "prefect>=3.4.1",
+    "pydantic>=2.11.4",
     "python-dotenv",
     "ruff",
     "tqdm",
