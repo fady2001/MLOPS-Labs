@@ -2,13 +2,13 @@ import datetime
 import os
 
 from dotenv import load_dotenv
+import duckdb
 import pandas as pd
 from prefect import flow, task
 from prefect.tasks import task_input_hash
 import requests
 
 from data_models import APIData, URLParams
-import duckdb
 from globals import logger
 
 
@@ -227,8 +227,8 @@ if __name__ == "__main__":
         url_params=URLParams(
             latitude=27,
             longitude=30,
-            start_date="2025-04-29",
-            end_date="2025-04-30",
+            start_date="2025-04-18",
+            end_date="2025-05-15",
             hourly=[
                 "temperature_2m",
                 "relative_humidity_2m",
