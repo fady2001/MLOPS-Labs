@@ -50,3 +50,18 @@
 2025-05-18 21:39:35 | INFO     | logger:82 - Deleting Out of Range Data
 2025-05-18 21:39:36 | INFO     | logger:82 - Data Deleted Successfully
 2025-05-18 21:39:36 | INFO     | logger:82 - Connection with MotherDuck Closed
+2025-05-18 23:35:30 | INFO     | logger:82 - Connecting To MotherDuck to Get/Load Data
+2025-05-18 23:36:00 | INFO     | logger:82 - Getting Scoring Data From MotherDuck
+2025-05-18 23:37:38 | INFO     | logger:82 - Connecting To MotherDuck to Get/Load Data
+2025-05-18 23:37:40 | INFO     | logger:82 - Getting Scoring Data From MotherDuck
+2025-05-18 23:39:36 | INFO     | logger:82 - Connecting To MotherDuck to Get/Load Data
+2025-05-18 23:39:38 | INFO     | logger:82 - Getting Scoring Data From MotherDuck
+2025-05-18 23:40:42 | INFO     | logger:82 - Connecting To MotherDuck to Get/Load Data
+2025-05-18 23:40:43 | INFO     | logger:82 - Getting Scoring Data From MotherDuck
+2025-05-18 23:41:28 | INFO     | logger:82 - Connecting To MotherDuck to Get/Load Data
+2025-05-18 23:41:30 | INFO     | logger:82 - Getting Scoring Data From MotherDuck
+2025-05-18 23:42:44 | INFO     | logger:82 - Connecting To MotherDuck to Get/Load Data
+2025-05-18 23:44:52 | INFO     | logger:82 - Connecting To MotherDuck to Get/Load Data
+2025-05-18 23:44:54 | INFO     | logger:82 - Getting Scoring Data From MotherDuck
+2025-05-18 23:47:30 | INFO     | logger:82 - Connecting To MotherDuck to Get/Load Data
+2025-05-18 23:47:33 | INFO     | logger:82 - Getting Scoring Data From MotherDuck

@@ -8,6 +8,8 @@ from prefect.tasks import task_input_hash
 from sktime.exceptions import NotFittedError
 from sktime.forecasting.fbprophet import Prophet
 
+from globals import logger
+
 
 @task(
     name="GetInferenceData",
@@ -36,8 +38,8 @@ def get_inference_data(conn, running_date: str) -> pd.DataFrame:
         dataframe of daily historical weather data.
     """
     df = conn.sql(
-        "SELECT * FROM ml_apps.iti_weather_forecasting.daily_weather_data WHERE"
-        f" reading_date >= CAST('{running_date}' AS DATE) - INTERVAL '400 days'"
+        "SELECT * FROM weather_data.daily_weather_data WHERE"
+        f" day_date >= CAST('{running_date}' AS DATE) - INTERVAL '400 days'"
     ).df()
     return df
 
@@ -73,18 +75,23 @@ def forecast_weather(
     NotFittedError
         Exception class to raise if estimator is used before fitting
     """
-    id = pd.Series([75354428 for _ in range(30)], name="location_id")
     inference_date = pd.Series([running_date for _ in range(30)], name="inference_date")
-    scoring_df = hist_df[["reading_date", "temperature"]]
-    scoring_df.set_index("reading_date", inplace=True)
+    hist_df.set_index("day_date", inplace=True)
+    hist_df = hist_df[hist_df.columns[0:1]]
+    # Convert the index to datetime
+    hist_df.index = pd.to_datetime(hist_df.index)
+    # convert it to pd.Series
+    hist_df = hist_df.squeeze()
+    # sort the index
+    hist_df = hist_df.sort_index()
+    
     model = Prophet(
         seasonality_mode="multiplicative",
         yearly_seasonality=True,
         weekly_seasonality=True,
-        daily_seasonality=False,
-        interval_width=0.95,
+        daily_seasonality=True,
     )
-    model.fit(scoring_df)
+    model.fit(hist_df)
     try:
         model.check_is_fitted()
         preds = model.predict(
@@ -122,7 +129,7 @@ def load_forecasts_into_db(conn, preds_df: pd.DataFrame) -> None:
     )
 
 
-def delete_out_of_range_data(conn, thresh_date: str, logger) -> None:
+def delete_out_of_range_data(conn, thresh_date: str) -> None:
     logger.info("Deleting Out of Range Data")
     conn.sql(f"""
             DELETE FROM ml_apps.iti_weather_forecasting.daily_forecasted_weather
@@ -137,7 +144,7 @@ def delete_out_of_range_data(conn, thresh_date: str, logger) -> None:
     validate_parameters=True,
     log_prints=True,
 )
-def forecast_flow(db_token: str, date: str, logger) -> None:
+def forecast_flow(db_token: str, date: str) -> None:
     """flow of inference
 
     Parameters
@@ -160,7 +167,13 @@ def forecast_flow(db_token: str, date: str, logger) -> None:
             logger.info(f"Model Forecasted Next {len(preds)} days")
             load_forecasts_into_db(conn=conn, preds_df=preds)
             logger.info("Data Loaded into MotherDuck")
-            delete_out_of_range_data(conn=conn, thresh_date=date, logger=logger)
+            delete_out_of_range_data(conn=conn, thresh_date=date)
         else:
             logger.info("No Records in Scoring data..")
     logger.info("Connection with MotherDuck Closed")
+    
+if __name__ == "__main__":
+    # Example usage
+    MOTHERDUCK_TOKEN="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZhZHkuYWRlbDIwMDFAZ21haWwuY29tIiwic2Vzc2lvbiI6ImZhZHkuYWRlbDIwMDEuZ21haWwuY29tIiwicGF0IjoiMEdtRTcxUkp6WlBFb1pNT0c5ZkMzTDZhQ3pHTUNfVjB5a0RudHE0YUhZZyIsInVzZXJJZCI6IjdlODVkYjQ0LTNhZWEtNGJmNi1hMzg4LWVkYzY2NGU0NDFiZiIsImlzcyI6Im1kX3BhdCIsInJlYWRPbmx5IjpmYWxzZSwidG9rZW5UeXBlIjoicmVhZF93cml0ZSIsImlhdCI6MTc0NzUxMDc0NSwiZXhwIjoxNzQ4ODA2NzQ1fQ.7i0cZTtnK41C2QIB1KqEilFvg_BHWflQD4bE3oJR5ro"
+    date = "2023-10-01"
+    forecast_flow(db_token=MOTHERDUCK_TOKEN, date=date)
