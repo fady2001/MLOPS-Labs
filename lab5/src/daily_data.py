@@ -46,6 +46,85 @@ def get_daily_data(conn, running_date: str) -> pd.DataFrame:
                         """).df()
     return df_daily
 
+@task(
+    name="GetDailyDataUptoNow",
+    description="get daily weather data from hourly data as dataframe",
+    tags=["Get", "DailyData"],
+    cache_key_fn=task_input_hash,
+    cache_expiration=datetime.timedelta(minutes=10),
+    retry_delay_seconds=30,
+    retries=3,
+    log_prints=True,
+    timeout_seconds=60,
+)
+def get_daily_data_upto_now(conn, running_date: str) -> pd.DataFrame:
+    """Get the daily data from hourly weather data
+
+    Parameters
+    ----------
+    conn : MotherDuck Database Connection
+    running_dt: str
+         string format of pipeline running date
+    """
+    logger.info(f"Get Daily Weather Data of {running_date}")
+    conn.sql("USE weather_data")
+    if running_date is None:
+        df_daily = conn.sql("""
+                        SELECT strftime(timestamp, '%Y-%m-%d') AS day_date,
+                               AVG(temperature) AS temperature,
+                               AVG(relative_humidity) AS relative_humidity,
+                               AVG(rain) AS rain,
+                               AVG(precipitation) AS precipitation,
+                               AVG(cloud_cover) AS cloud_cover,
+                               AVG(wind_speed) AS wind_speed
+                        FROM weather_data.hourly_weather_data
+                        GROUP BY day_date
+                        """).df()
+    else:
+        df_daily = conn.sql(f"""
+                        SELECT strftime(timestamp, '%Y-%m-%d') AS day_date,
+                               AVG(temperature) AS temperature,
+                               AVG(relative_humidity) AS relative_humidity,
+                               AVG(rain) AS rain,
+                               AVG(precipitation) AS precipitation,
+                               AVG(cloud_cover) AS cloud_cover,
+                               AVG(wind_speed) AS wind_speed
+                        FROM weather_data.hourly_weather_data
+                        WHERE strftime(timestamp, '%Y-%m-%d') > '{running_date}'
+                        GROUP BY day_date
+                        """).df()
+    return df_daily
+
+@task(
+    name="GetLastDayDate",
+    description="get last daily weather data from daily data as str",
+    tags=["Get", "LastDay"],
+    cache_key_fn=task_input_hash,
+    cache_expiration=datetime.timedelta(minutes=10),
+    retry_delay_seconds=30,
+    retries=3,
+    log_prints=True,
+    timeout_seconds=60,
+)
+def get_last_day_date(conn) -> str:
+    """Get the last daily data from hourly weather data
+
+    Parameters
+    ----------
+    conn : MotherDuck Database Connection
+    """
+    logger.info("Get Last Daily Weather Data")
+    conn.sql("USE weather_data")
+    last_day_date = conn.sql("""
+                        SELECT strftime(day_date, '%Y-%m-%d') AS day_date
+                        FROM weather_data.daily_weather_data
+                        ORDER BY day_date DESC
+                        LIMIT 1
+                        """).df()
+    if len(last_day_date) > 0:
+        return last_day_date.iloc[0]['day_date']
+    else:
+        return None
 
 @task(
     name="CheckIfDailyExists",
@@ -152,7 +231,9 @@ def data_prep_flow(db_token: str, date: str) -> bool:
     logger.info("Connecting To MotherDuck to Load Data")
     conn = duckdb.connect(f"md:?motherduck_token={db_token}")
     logger.info("Connection Successfully intiated")
-    df = get_daily_data(conn=conn, running_date=date)
+    conn.sql("USE weather_data")
+    last_day = get_last_day_date(conn=conn)
+    df = get_daily_data_upto_now(conn=conn, running_date=last_day)
     if len(df) > 0:
         inference_flag = True
         logger.info(f"Daily Data for {date} Exists")
@@ -165,5 +246,5 @@ def data_prep_flow(db_token: str, date: str) -> bool:
 if __name__ == "__main__":
     # Example usage
     load_dotenv()
-    date = "2025-04-29"  # Example date
+    date = "2024-04-29"
     data_prep_flow(db_token=os.getenv("MOTHERDUCK_TOKEN"), date=date)

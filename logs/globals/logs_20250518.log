@@ -35,3 +35,18 @@
 2025-05-18 20:49:37 | INFO     | logger:82 - Deleting Out of Range Data
 2025-05-18 20:49:37 | INFO     | logger:82 - Data Deleted Successfully
 2025-05-18 20:49:38 | INFO     | logger:82 - Connection with MotherDuck Closed
+2025-05-18 21:38:11 | INFO     | logger:82 - Connecting To MotherDuck to Load Data
+2025-05-18 21:38:18 | INFO     | logger:82 - Connection Successfully intiated
+2025-05-18 21:38:22 | INFO     | logger:82 - Get Last Daily Weather Data
+2025-05-18 21:39:22 | INFO     | logger:82 - Connecting To MotherDuck to Load Data
+2025-05-18 21:39:24 | INFO     | logger:82 - Connection Successfully intiated
+2025-05-18 21:39:28 | INFO     | logger:82 - Get Last Daily Weather Data
+2025-05-18 21:39:30 | INFO     | logger:82 - Get Daily Weather Data of None
+2025-05-18 21:39:31 | INFO     | logger:82 - Daily Data for 2024-04-29 Exists
+2025-05-18 21:39:32 | INFO     | logger:82 - Check if Data Exist for the current-date: 2024-04-29
+2025-05-18 21:39:32 | INFO     | logger:82 - found 0 records
+2025-05-18 21:39:32 | INFO     | logger:82 - no data exists for 2024-04-29
+2025-05-18 21:39:34 | INFO     | logger:82 - Data Insert Successfully into daily_weather_data Table
+2025-05-18 21:39:35 | INFO     | logger:82 - Deleting Out of Range Data
+2025-05-18 21:39:36 | INFO     | logger:82 - Data Deleted Successfully
+2025-05-18 21:39:36 | INFO     | logger:82 - Connection with MotherDuck Closed
