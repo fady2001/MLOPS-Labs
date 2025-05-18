@@ -1,0 +1,37 @@
+2025-05-18 18:04:07 | INFO     | logger:82 - Connecting To MotherDuck to Load Data
+2025-05-18 18:04:22 | INFO     | logger:82 - Connection Successfully intiated
+2025-05-18 18:04:30 | INFO     | logger:82 - Get Daily Weather Data of 2023-10-01
+2025-05-18 18:31:47 | INFO     | logger:82 - Connecting To MotherDuck to Load Data
+2025-05-18 18:31:55 | INFO     | logger:82 - Connection Successfully intiated
+2025-05-18 18:31:57 | INFO     | logger:82 - Get Daily Weather Data of 2025-04-29
+2025-05-18 18:32:18 | INFO     | logger:82 - Daily Data for 2025-04-29 Exists
+2025-05-18 18:32:28 | INFO     | logger:82 - Check if Data Exist for the current-date: 2025-04-29
+2025-05-18 18:51:07 | INFO     | logger:82 - Connecting To MotherDuck to Load Data
+2025-05-18 18:51:13 | INFO     | logger:82 - Connection Successfully intiated
+2025-05-18 18:51:16 | INFO     | logger:82 - Get Daily Weather Data of 2025-04-29
+2025-05-18 18:51:19 | INFO     | logger:82 - Daily Data for 2025-04-29 Exists
+2025-05-18 18:51:29 | INFO     | logger:82 - Check if Data Exist for the current-date: 2025-04-29
+2025-05-18 20:34:05 | INFO     | logger:82 - Connecting To MotherDuck to Load Data
+2025-05-18 20:34:55 | INFO     | logger:82 - Connection Successfully intiated
+2025-05-18 20:35:00 | INFO     | logger:82 - Get Daily Weather Data of 2025-04-29
+2025-05-18 20:35:32 | INFO     | logger:82 - Daily Data for 2025-04-29 Exists
+2025-05-18 20:35:36 | INFO     | logger:82 - Check if Data Exist for the current-date: 2025-04-29
+2025-05-18 20:43:57 | INFO     | logger:82 - Connecting To MotherDuck to Load Data
+2025-05-18 20:45:13 | INFO     | logger:82 - Connecting To MotherDuck to Load Data
+2025-05-18 20:45:19 | INFO     | logger:82 - Connection Successfully intiated
+2025-05-18 20:45:22 | INFO     | logger:82 - Get Daily Weather Data of 2025-04-29
+2025-05-18 20:45:50 | INFO     | logger:82 - Daily Data for 2025-04-29 Exists
+2025-05-18 20:45:53 | INFO     | logger:82 - Check if Data Exist for the current-date: 2025-04-29
+2025-05-18 20:46:03 | INFO     | logger:82 - found 0 records
+2025-05-18 20:46:09 | INFO     | logger:82 - no data exists for 2025-04-29
+2025-05-18 20:48:02 | INFO     | logger:82 - Connecting To MotherDuck to Load Data
+2025-05-18 20:49:17 | INFO     | logger:82 - Connection Successfully intiated
+2025-05-18 20:49:20 | INFO     | logger:82 - Get Daily Weather Data of 2025-04-29
+2025-05-18 20:49:24 | INFO     | logger:82 - Daily Data for 2025-04-29 Exists
+2025-05-18 20:49:26 | INFO     | logger:82 - Check if Data Exist for the current-date: 2025-04-29
+2025-05-18 20:49:26 | INFO     | logger:82 - found 0 records
+2025-05-18 20:49:26 | INFO     | logger:82 - no data exists for 2025-04-29
+2025-05-18 20:49:34 | INFO     | logger:82 - Data Insert Successfully into daily_weather_data Table
+2025-05-18 20:49:37 | INFO     | logger:82 - Deleting Out of Range Data
+2025-05-18 20:49:37 | INFO     | logger:82 - Data Deleted Successfully
+2025-05-18 20:49:38 | INFO     | logger:82 - Connection with MotherDuck Closed
