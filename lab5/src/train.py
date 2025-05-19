@@ -1,6 +1,8 @@
 import datetime
+import os
 import pickle
 
+from dotenv import load_dotenv
 import duckdb
 import pandas as pd
 from prefect import flow, task
@@ -174,6 +176,6 @@ def forecast_flow(db_token: str, date: str) -> None:
     
 if __name__ == "__main__":
     # Example usage
-    MOTHERDUCK_TOKEN="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZhZHkuYWRlbDIwMDFAZ21haWwuY29tIiwic2Vzc2lvbiI6ImZhZHkuYWRlbDIwMDEuZ21haWwuY29tIiwicGF0IjoiMEdtRTcxUkp6WlBFb1pNT0c5ZkMzTDZhQ3pHTUNfVjB5a0RudHE0YUhZZyIsInVzZXJJZCI6IjdlODVkYjQ0LTNhZWEtNGJmNi1hMzg4LWVkYzY2NGU0NDFiZiIsImlzcyI6Im1kX3BhdCIsInJlYWRPbmx5IjpmYWxzZSwidG9rZW5UeXBlIjoicmVhZF93cml0ZSIsImlhdCI6MTc0NzUxMDc0NSwiZXhwIjoxNzQ4ODA2NzQ1fQ.7i0cZTtnK41C2QIB1KqEilFvg_BHWflQD4bE3oJR5ro"
+    load_dotenv()
     date = "2023-10-01"
-    forecast_flow(db_token=MOTHERDUCK_TOKEN, date=date)
+    forecast_flow(db_token=os.environ("MOTHERDUCK_TOKEN"), date=date)
