@@ -1,13 +1,12 @@
 import datetime
 import os
-import pickle
 
 from dotenv import load_dotenv
 import duckdb
 import pandas as pd
 from prefect import flow, task
 from prefect.tasks import task_input_hash
-from sktime.exceptions import NotFittedError
+from sktime.forecasting.base import ForecastingHorizon
 from sktime.forecasting.fbprophet import Prophet
 
 from globals import logger
@@ -40,9 +39,11 @@ def get_inference_data(conn, running_date: str) -> pd.DataFrame:
         dataframe of daily historical weather data.
     """
     df = conn.sql(
-        "SELECT * FROM weather_data.daily_weather_data WHERE"
+        "SELECT day_date, temperature FROM weather_data.daily_weather_data WHERE"
         f" day_date >= CAST('{running_date}' AS DATE) - INTERVAL '400 days'"
     ).df()
+    df.set_index("day_date", inplace=True)
+    df.sort_index(inplace=True)
     return df
 
 
@@ -55,56 +56,34 @@ def get_inference_data(conn, running_date: str) -> pd.DataFrame:
     log_prints=True,
     timeout_seconds=30,
 )
-def forecast_weather(
-    hist_df: pd.DataFrame, running_date: str
-) -> pd.DataFrame:
-    """forecast the temperature next 30 days
+def forecast_weather(hist_df: pd.DataFrame, running_date: str) -> pd.DataFrame:
+    """forecast the next 30 days of weather
 
     Parameters
     ----------
     hist_df : pd.DataFrame
-        historical temperature dataframe
-    running_date: str
+        dataframe of historical weather data
+    running_date : str
         string format of pipeline running date
 
     Returns
     -------
     pd.DataFrame
-       dataframe of forecasted temperature
-
-    Raises
-    ------
-    NotFittedError
-        Exception class to raise if estimator is used before fitting
+        dataframe of forecasted temperature
     """
-    inference_date = pd.Series([running_date for _ in range(30)], name="inference_date")
-    hist_df.set_index("day_date", inplace=True)
-    hist_df = hist_df[hist_df.columns[0:1]]
-    # Convert the index to datetime
-    hist_df.index = pd.to_datetime(hist_df.index)
-    # convert it to pd.Series
-    hist_df = hist_df.squeeze()
-    # sort the index
-    hist_df = hist_df.sort_index()
-    
-    model = Prophet(
-        seasonality_mode="multiplicative",
-        yearly_seasonality=True,
-        weekly_seasonality=True,
-        daily_seasonality=True,
-    )
-    model.fit(hist_df)
     try:
-        model.check_is_fitted()
-        preds = model.predict(
-            fh=range(1, 31)
-        )
-        preds.reset_index(inplace=True)
-        preds.columns = ["reading_date", "forecasted_temperature"]
-        preds = pd.concat([id, preds, inference_date], axis=1)
-        return preds
-    except NotFittedError:
-        raise NotFittedError("Loaded Model isn't fitted on Training Data")
+        model = Prophet()
+        model.fit(hist_df)
+        future = ForecastingHorizon(list(range(1, 11)), is_relative=True)
+        forecast = model.predict(future)
+        print(forecast.head())
+        preds_df = pd.DataFrame(forecast, columns=["forecasted_temperature"]).reset_index()
+        # Rename the columns
+        preds_df.rename(columns={"index": "day_date"}, inplace=True)
+        return preds_df
+    except Exception as e:
+        logger.error(f"An error occurred during forecasting: {e}")
+        raise e
 
 
 @task(
@@ -125,10 +104,7 @@ def load_forecasts_into_db(conn, preds_df: pd.DataFrame) -> None:
     preds_df : pd.DataFrame
         dataframe of forecasted temperature
     """
-    conn.sql(
-        "INSERT INTO ml_apps.iti_weather_forecasting.daily_forecasted_weather SELECT * FROM"
-        " preds_df"
-    )
+    conn.sql("INSERT INTO weather_data.daily_forecasted_weather SELECT * FROM preds_df")
 
 
 def delete_out_of_range_data(conn, thresh_date: str) -> None:
@@ -163,9 +139,7 @@ def forecast_flow(db_token: str, date: str) -> None:
         logger.info("Getting Scoring Data From MotherDuck")
         df = get_inference_data(conn=conn, running_date=date)
         if len(df) > 0:
-            preds = forecast_weather(
-                hist_df=df, running_date=date
-            )
+            preds = forecast_weather(hist_df=df, running_date=date)
             logger.info(f"Model Forecasted Next {len(preds)} days")
             load_forecasts_into_db(conn=conn, preds_df=preds)
             logger.info("Data Loaded into MotherDuck")
@@ -173,9 +147,10 @@ def forecast_flow(db_token: str, date: str) -> None:
         else:
             logger.info("No Records in Scoring data..")
     logger.info("Connection with MotherDuck Closed")
-    
+
+
 if __name__ == "__main__":
     # Example usage
     load_dotenv()
     date = "2023-10-01"
-    forecast_flow(db_token=os.environ("MOTHERDUCK_TOKEN"), date=date)
+    forecast_flow(db_token=os.environ.get("MOTHERDUCK_TOKEN", None), date=date)
