@@ -1,16 +1,18 @@
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
-    "version": "0.2.0",
-    "configurations": [
-    
-        {
-            "name": "Python Debugger: Current File",
-            "type": "debugpy",
-            "request": "launch",
-            "program": "${file}",
-            "console": "integratedTerminal"
-        }
-    ]
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Python Debugger: Current File",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${file}",
+      "console": "integratedTerminal",
+      "env": {
+        "MOTHERDUCK_TOKEN": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZhZHkuYWRlbDIwMDFAZ21haWwuY29tIiwic2Vzc2lvbiI6ImZhZHkuYWRlbDIwMDEuZ21haWwuY29tIiwicGF0IjoiMEdtRTcxUkp6WlBFb1pNT0c5ZkMzTDZhQ3pHTUNfVjB5a0RudHE0YUhZZyIsInVzZXJJZCI6IjdlODVkYjQ0LTNhZWEtNGJmNi1hMzg4LWVkYzY2NGU0NDFiZiIsImlzcyI6Im1kX3BhdCIsInJlYWRPbmx5IjpmYWxzZSwidG9rZW5UeXBlIjoicmVhZF93cml0ZSIsImlhdCI6MTc0NzUxMDc0NSwiZXhwIjoxNzQ4ODA2NzQ1fQ.7i0cZTtnK41C2QIB1KqEilFvg_BHWflQD4bE3oJR5ro"
+      }
+    }
+  ]
 }

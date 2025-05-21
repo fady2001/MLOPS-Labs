@@ -34,3 +34,21 @@
 2025-05-21 13:03:00 | INFO     | logger:82 - Connecting To MotherDuck to Get/Load Data
 2025-05-21 13:03:03 | INFO     | logger:82 - Getting Scoring Data From MotherDuck
 2025-05-21 13:03:21 | INFO     | logger:82 - Model Forecasted Next 10 days
+2025-05-21 19:01:21 | INFO     | logger:82 - Connecting To MotherDuck to Get/Load Data
+2025-05-21 19:01:25 | INFO     | logger:82 - Getting Scoring Data From MotherDuck
+2025-05-21 19:02:39 | INFO     | logger:82 - No Records in Scoring data..
+2025-05-21 19:02:42 | INFO     | logger:82 - Connection with MotherDuck Closed
+2025-05-21 19:21:58 | INFO     | logger:82 - Connecting To MotherDuck to Get/Load Data
+2025-05-21 19:22:04 | INFO     | logger:82 - Getting Scoring Data From MotherDuck
+2025-05-21 19:23:06 | INFO     | logger:82 - Model Forecasted Next 10 days
+2025-05-21 19:23:52 | INFO     | logger:82 - Connecting To MotherDuck to Get/Load Data
+2025-05-21 19:23:59 | INFO     | logger:82 - Getting Scoring Data From MotherDuck
+2025-05-21 19:27:20 | INFO     | logger:82 - Connecting To MotherDuck to Get/Load Data
+2025-05-21 19:27:24 | INFO     | logger:82 - Getting Scoring Data From MotherDuck
+2025-05-21 19:27:32 | INFO     | logger:82 - Model Forecasted Next 10 days
+2025-05-21 19:27:34 | INFO     | logger:82 - Data Loaded into MotherDuck
+2025-05-21 19:27:34 | INFO     | logger:82 - Deleting Out of Range Data
+2025-05-21 19:27:34 | INFO     | logger:82 - Data Deleted Successfully
+2025-05-21 19:27:34 | INFO     | logger:82 - Connection with MotherDuck Closed
+2025-05-21 19:29:12 | INFO     | logger:82 - Connecting To MotherDuck to Get/Load Data
+2025-05-21 19:29:17 | INFO     | logger:82 - Getting Scoring Data From MotherDuck

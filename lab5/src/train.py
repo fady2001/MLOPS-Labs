@@ -83,9 +83,10 @@ def forecast_weather(hist_df: pd.DataFrame, running_date: str) -> pd.DataFrame:
         future = ForecastingHorizon(list(range(1, 11)), is_relative=True)
         forecast = model.predict(future)
         print(forecast.head())
-        preds_df = pd.DataFrame(forecast, columns=["forecasted_temperature"]).reset_index()
+        preds_df = pd.DataFrame(forecast, columns=["temperature"]).reset_index()
         # Rename the columns
-        preds_df.rename(columns={"index": "day_date"}, inplace=True)
+        preds_df.rename(columns={"index": "day_date","temperature":"forecasted_temperature"}, inplace=True)
+        print(preds_df.head())
         return preds_df
     except Exception as e:
         logger.error(f"An error occurred during forecasting: {e}")
@@ -110,14 +111,14 @@ def load_forecasts_into_db(conn, preds_df: pd.DataFrame) -> None:
     preds_df : pd.DataFrame
         dataframe of forecasted temperature
     """
-    conn.sql("INSERT INTO weather_data.daily_forecasted_weather SELECT * FROM preds_df")
+    conn.sql("INSERT INTO weather_data.predictions SELECT * FROM preds_df")
 
 
 def delete_out_of_range_data(conn, thresh_date: str) -> None:
     logger.info("Deleting Out of Range Data")
     conn.sql(f"""
-            DELETE FROM ml_apps.iti_weather_forecasting.daily_forecasted_weather
-            WHERE inference_date <= CAST('{thresh_date}' AS DATE)-1000
+            DELETE FROM weather_data.predictions
+            WHERE day_date <= CAST('{thresh_date}' AS DATE)-1000
         """)
     logger.info("Data Deleted Successfully")
 
