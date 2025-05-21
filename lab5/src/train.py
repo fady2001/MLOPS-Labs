@@ -72,7 +72,13 @@ def forecast_weather(hist_df: pd.DataFrame, running_date: str) -> pd.DataFrame:
         dataframe of forecasted temperature
     """
     try:
-        model = Prophet()
+        model = Prophet(
+            n_changepoints=50,
+            changepoint_range=0.95,
+            seasonality_prior_scale = 1,
+            changepoint_prior_scale = 0.5,
+            seasonality_mode="multiplicative",
+        )
         model.fit(hist_df)
         future = ForecastingHorizon(list(range(1, 11)), is_relative=True)
         forecast = model.predict(future)
